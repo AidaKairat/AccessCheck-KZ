@@ -26,7 +26,8 @@ window.ACK = (function () {
     { id: 21, text: 'Bureau of National Statistics of the Republic of Kazakhstan. "Differentiation of wages of workers in the Republic of Kazakhstan." 23 October 2026. Average hourly wage 2,508 tenge.', url: 'https://stat.gov.kz/en/industries/labor--income/stat-wags/publications/519860/' },
     { id: 22, text: 'Republic of Kazakhstan. SN RK 3.06-01-2011 "Accessibility of buildings and structures for people with limited mobility" and SP RK 3.06-101-2012 "Design of buildings and structures with accessibility for people with limited mobility. General provisions."', url: 'https://www.gov.kz/uploads/2021/5/14/0111e832e36e8e3348a4f8cce36aebf5_original.1102336.doc' },
     { id: 23, text: 'Law of the Republic of Kazakhstan No. 230-VIII "On Artificial Intelligence," 17 November 2025, in force 18 January 2026. Summary: EY Kazakhstan legal alert, December 2025.', url: 'https://www.ey.com/en_kz/technical/tax-alerts/2025/12/law-on-artificial-intelligence-kazakhstan' },
-    { id: 24, text: 'Law of the Republic of Kazakhstan No. 94-V "On Personal Data and their Protection," 21 May 2013.', url: 'https://adilet.zan.kz/eng/docs/Z1300000094' }
+    { id: 24, text: 'Law of the Republic of Kazakhstan No. 94-V "On Personal Data and their Protection," 21 May 2013.', url: 'https://adilet.zan.kz/eng/docs/Z1300000094' },
+    { id: 25, text: 'Ministry of Labour and Social Protection of the Population of the Republic of Kazakhstan. Interactive Accessibility Map, regional view. Facility counts per region as displayed on 15 November 2026 (read by the author from the map; total 43,472).', url: 'https://inva.gov.kz/ru/map/207' }
   ];
 
   /* Registered people with disabilities, thousands. t = decimal year. */
@@ -78,12 +79,29 @@ window.ACK = (function () {
       ]
     },
     facilities: {
-      sub: 'Facilities listed as adapted on the official map, thousands (2025). Only three cities were reported.',
-      unit: 'k', max: 12,
+      sub: 'Number of facilities shown on the official accessibility map for each region and city, as displayed on 15 November 2026. The map shows how many facilities are registered, not how many of them are adapted.',
+      unit: '', max: 10500, decimals: 0, unitLabel: 'Facilities on the map',
       rows: [
-        { label: 'Almaty', value: 10.1, ref: 2 },
-        { label: 'Shymkent', value: 2.1, ref: 2 },
-        { label: 'Astana', value: 1.7, ref: 2 }
+        { label: 'Almaty city', value: 9342, ref: 25 },
+        { label: 'Turkistan Region', value: 3711, ref: 25 },
+        { label: 'Shymkent city', value: 2396, ref: 25 },
+        { label: 'Atyrau Region', value: 2386, ref: 25 },
+        { label: 'Kyzylorda Region', value: 2378, ref: 25 },
+        { label: 'Astana', value: 2115, ref: 25 },
+        { label: 'Kostanay Region', value: 1907, ref: 25 },
+        { label: 'Akmola Region', value: 1873, ref: 25 },
+        { label: 'Karaganda Region', value: 1748, ref: 25 },
+        { label: 'West Kazakhstan', value: 1740, ref: 25 },
+        { label: 'East Kazakhstan', value: 1735, ref: 25 },
+        { label: 'Pavlodar Region', value: 1732, ref: 25 },
+        { label: 'North Kazakhstan', value: 1611, ref: 25 },
+        { label: 'Mangystau Region', value: 1584, ref: 25 },
+        { label: 'Zhambyl Region', value: 1546, ref: 25 },
+        { label: 'Almaty Region', value: 1518, ref: 25 },
+        { label: 'Aktobe Region', value: 1338, ref: 25 },
+        { label: 'Abay Region', value: 1298, ref: 25 },
+        { label: 'Zhetisu Region', value: 1120, ref: 25 },
+        { label: 'Ulytau Region', value: 394, ref: 25 }
       ]
     }
   };

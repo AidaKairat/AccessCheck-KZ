@@ -54,14 +54,14 @@
   }).join('');
 
   /* ---------- charts ---------- */
-  var regionKey = 'rural';
+  var regionKey = 'facilities';
   function drawCharts() {
     CH.line($('chartPop'), D.population, { x0: 2017, x1: 2027, y0: 660, y1: 760, yTicks: [660, 680, 700, 720, 740, 760], aria: 'Registered people with disabilities in Kazakhstan rose from 674 thousand in 2017 to about 752 thousand in April 2026.' });
     CH.hbar($('chartAdapt'), D.adapted, { unit: '%', max: 100, decimals: 0, target: { value: D.adaptedTarget.value, label: D.adaptedTarget.label, ref: 1 }, unitLabel: 'Share fully adapted', aria: 'Share of facilities reported as fully adapted: 53% in 2024, 64% in 2025, 67% in April 2026, against a target of 80%.' });
     CH.hbar($('chartWho'), D.equippedFor, { unit: 'k', max: 46, unitLabel: 'Thousands of facilities', aria: 'Of 42.9 thousand facilities on the map, about 23 to 24 thousand are equipped for each of hearing, vision and wheelchair users.' });
     var r = D.regions[regionKey];
     $('regionSub').textContent = r.sub;
-    CH.hbar($('chartRegion'), r.rows, { unit: r.unit, max: r.max, unitLabel: r.unit === '%' ? 'Per cent' : 'Thousands of facilities', aria: r.sub });
+    CH.hbar($('chartRegion'), r.rows, { unit: r.unit, max: r.max, decimals: r.decimals, unitLabel: r.unitLabel || 'Per cent', aria: r.sub });
     drawCost();
   }
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.seg [role=tab]'));
