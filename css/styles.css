@@ -313,6 +313,23 @@ input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; accent-
 .conditions li { counter-increment: cd; display: grid; grid-template-columns: 34px 1fr; gap: 8px; padding: 16px 0; border-top: 1px solid rgba(255, 255, 255, .22); line-height: 1.5; }
 .conditions li::before { content: counter(cd); font-weight: 800; color: var(--blue-mid); font-size: 1.1rem; }
 
+/* ---------- transparency statement ---------- */
+.ts-cols { margin-top: 44px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.ts-col { border-top: 3px solid var(--blue-mid); padding-top: 22px; }
+.ts-col.mine { border-top-color: var(--blue); }
+.band .ts-col h3, .band .ts-rejected h3 { margin-top: 0; font-size: 1.3rem; }
+.ts-list { margin-top: 10px; }
+.ts-list li { padding: 15px 0; border-bottom: 1px solid var(--line); line-height: 1.55; }
+.ts-list li:last-child { border-bottom: 0; }
+.ts-rejected { margin-top: 48px; border-top: 3px solid var(--ink); padding-top: 22px; }
+.ts-rows { margin-top: 10px; }
+.ts-rows > div { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 8px 40px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.ts-rows > div:last-child { border-bottom: 0; }
+.ts-rows dt { font-weight: 700; line-height: 1.4; padding-left: 16px; border-left: 3px solid var(--blue); }
+.ts-rows dd { color: var(--soft); line-height: 1.55; }
+.band .wrap > .ts-note { margin-top: 28px; font-size: 0.86rem; font-style: italic; color: var(--soft); }
+.ts-note + h3 { margin-top: 64px; }
+
 /* ---------- references and footer ---------- */
 .refs { margin-top: 16px; counter-reset: rf; display: grid; gap: 10px; font-size: 0.9rem; line-height: 1.5; max-width: 62em; }
 .refs li { counter-increment: rf; display: block; padding: 6px 8px 6px 44px; position: relative; border-radius: 8px; overflow-wrap: anywhere; }
@@ -337,7 +354,8 @@ input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; accent-
   .wrap { padding: 0 20px; }
   .hero { padding: 36px 20px 56px; gap: 32px; }
   .band { padding: 60px 0; }
-  .two-col, .chart-grid, .demo-top, .calc, .limits, .conditions, .versus { grid-template-columns: 1fr; }
+  .two-col, .chart-grid, .demo-top, .calc, .limits, .conditions, .versus, .ts-cols { grid-template-columns: 1fr; }
+  .ts-col + .ts-col { margin-top: 40px; }
   .two-col { gap: 0; }
   .demo-stage { position: static; max-height: none; }
   .level-cards, .cost-grid, .report-rows { grid-template-columns: 1fr; }
@@ -352,6 +370,7 @@ input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; accent-
   .levels { grid-template-columns: 1fr; }
   .levels button { border-right: 0; border-bottom: 1px solid var(--line); }
   .chart-card, .demo-stage, .demo-form, .report, .calc-in, .calc-out, .versus-card { padding: 18px; }
+  .ts-rows > div { grid-template-columns: 1fr; }
   .pair { grid-template-columns: 1fr; }
   .paper, .paper:nth-child(even) { padding: 20px 0; border-left: 0; }
   .paper + .paper { border-top: 1px solid var(--line); }
