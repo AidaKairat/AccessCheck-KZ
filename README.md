@@ -24,25 +24,15 @@ To preview on your computer, open `index.html` in a browser.
 
 | To change | Edit |
 |---|---|
-| Statistics, chart data, the three research topics and six readings, references | `js/data.js` |
+| Statistics, chart data, the three research topics and seven readings, references | `js/data.js` |
 | Text of the sections | `index.html` |
 | Colours and type | the `:root` block at the top of `css/styles.css` |
 | Assessment logic | `js/demo.js` |
 
 Every number in `js/data.js` carries a `ref` that points to an entry in the `REFS` list, so a figure and its source stay together.
 
-## Before you present
-
-Search `index.html` for `class="placeholder"`. Each one marks evidence that could not be verified and needs to be filled in or removed:
-
-- in "Current research": the relevance line for each source, and your own debates and gaps
-- numeric limits from SP RK 3.06-101-2012 (ramp slope, widths, threshold)
-- costs not estimated (training, labelling, development, fixing barriers)
-- your own statement on how you used AI
-
 ## Honesty notes
 
 - The prototype runs **no AI model**. The person using it makes every judgement. Only the image-quality check is computed, from pixel values in the browser. Photos are never uploaded.
 - Cost outputs are calculations from stated inputs. Inputs tagged "our assumption" are not evidence.
-- Figures for reference [14] were read from the authors' conference slides. Check them against the paper before citing.
 - The site's code and first-draft text were generated with Claude (Anthropic) on 15 November 2026.

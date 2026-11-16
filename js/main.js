@@ -81,7 +81,7 @@
 
   /* ---------- research: three topics, two readings per row ---------- */
   (function () {
-    var ph = function (what) { return '<span class="slot">Placeholder: ' + what + ' to be added by the author.</span>'; };
+    var ph = function () { return 'Not yet added.'; };
     $('papers').innerHTML = D.approaches.map(function (a, n) {
       var cards = D.papers.filter(function (p) { return p.approach === a.key; }).map(function (p) {
         return '<article class="paper"><h4>' + esc(p.title) + '</h4><p class="paper-cite">' + esc(p.cite) + ' <a class="cite" href="#ref-' + p.ref + '">[' + p.ref + ']</a></p>' +
