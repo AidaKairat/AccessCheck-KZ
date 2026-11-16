@@ -159,36 +159,31 @@
 <section id="research" class="band">
   <div class="wrap">
     <h2>Current research</h2>
-    <p class="intro">Six academic sources, grouped by how they approach the question of measuring accessibility. Choose an approach to filter them.</p>
+    <p class="intro">Six academic sources in three topics: two on Kazakhstan's disability policy, two on cities and their infrastructure, and two on tools for assessing accessibility. Choose a topic to filter them.</p>
 
-    <div class="chips" role="group" aria-label="Filter by research approach" id="approachChips"></div>
+    <div class="chips" role="group" aria-label="Filter by topic" id="approachChips"></div>
     <div class="papers" id="papers"></div>
 
     <div class="two-col">
       <div>
         <h3>Where researchers disagree</h3>
         <dl class="debates">
-          <dt>Scale or accuracy</dt>
-          <dd>Automation covers more streets than volunteers can. But the best automated curb-ramp detector in this set was right about one detection in three (33.7% precision at 78.7% recall), and for missing curb ramps one in eight.<a class="cite" href="#ref-14">[14]</a> Crowd workers reached about 68% on both measures.<a class="cite" href="#ref-12">[12]</a></dd>
-          <dt>Detecting a feature or judging its condition</dt>
-          <dd>Liu and colleagues note that most models find a ramp but do not say whether it is usable, and their own fine-grained model reached a reliable score on only 13 of 33 condition tags.<a class="cite" href="#ref-15">[15]</a></dd>
-          <dt>More data or cleaner data</dt>
-          <dd>Training on a larger but noisier label set cut curb-ramp tag performance roughly in half in the same study.<a class="cite" href="#ref-15">[15]</a> Cleaning took four assistants more than 100 hours.</dd>
-          <dt>Fairness or justice</dt>
-          <dd>Bennett and Keyes argue that computer vision built "for" disabled people can entrench existing gatekeepers and legitimise surveillance unless disabled people hold power over its design.<a class="cite" href="#ref-17">[17]</a></dd>
+          <dt>Law on paper or change on the ground</dt>
+          <dd>Koishibayev and colleagues find Kazakhstan's legislation largely consistent with the UN convention, but without effective mechanisms to carry it out.<a class="cite" href="#ref-26">[26]</a> The UN committee's 2024 review makes a similar point about the lack of binding enforcement of accessibility standards.<a class="cite" href="#ref-4">[4]</a></dd>
         </dl>
+        <p class="placeholder"><b>Placeholder, author content.</b> Add the other debates across your six sources here, for example how each topic defines "accessible", and whether technology or policy should lead.</p>
       </div>
       <div>
         <h3>Gaps this project responds to</h3>
         <ul class="gaps">
-          <li><b>No Kazakhstan evidence.</b> None of the technical studies reviewed here reports results on imagery from Kazakhstan or Central Asia. Project Sidewalk's label types follow United States standards and its authors say they may need adapting elsewhere.<a class="cite" href="#ref-12">[12]</a></li>
-          <li><b>Entrances are under-studied.</b> The technical work concentrates on sidewalks and curb ramps seen from the street. The Kazakhstan source treats entrances and buildings as an architectural question, without measurement at scale.<a class="cite" href="#ref-16">[16]</a></li>
-          <li><b>Compliance is not measured.</b> None of the six sources tests whether a photo can establish that a ramp meets a national building standard.</li>
-          <li><b>Severity and usability are left out.</b> Severity ratings are explicitly not inferred in the most recent benchmark.<a class="cite" href="#ref-15">[15]</a></li>
+          <li><b>The three topics rarely meet.</b> In this set, the Kazakhstan sources deal with law, policy and architecture, while the assessment tools were developed elsewhere. AccessCheck KZ sits where they overlap. This is a starting point for the author to revise.</li>
         </ul>
-        <p class="placeholder"><b>Placeholder, evidence needed.</b> Winter conditions (snow and ice on ramps) are central in Kazakhstan. We found no study in this set that evaluates them. Add a source if one exists, or state this as an open question.</p>
+        <p class="placeholder"><b>Placeholder, author content.</b> Add the gaps you identify in your six sources here.</p>
       </div>
     </div>
+
+    <h3>Supporting technical studies</h3>
+    <p>Other parts of this site cite additional studies for specific figures on the accuracy and limits of automated assessment: Project Sidewalk<a class="cite" href="#ref-12">[12]</a>, Tohme<a class="cite" href="#ref-13">[13]</a>, two deep-learning benchmarks<a class="cite" href="#ref-14">[14]</a><a class="cite" href="#ref-15">[15]</a> and a critique of fairness in disability AI<a class="cite" href="#ref-17">[17]</a>. They are background evidence, separate from the six sources above.</p>
   </div>
 </section>
 
@@ -399,7 +394,8 @@
         <h3>How AI was used to make this site</h3>
         <ul class="plain">
           <li>The site's code, layout and first-draft text were generated with Claude (Anthropic) on 15 November 2026 from the author's written brief.</li>
-          <li>Sources were found through web search by the same assistant. Figures were taken from the pages listed below and paraphrased.</li>
+          <li>The six sources in "Current research" were chosen by the author. The citations for four of them were checked online by the assistant, and two are still to be completed.</li>
+          <li>Other sources were found through web search by the same assistant. Figures were taken from the pages listed below and paraphrased.</li>
           <li>Results for reference [14] were read from the authors' conference slides, not the paper's tables.</li>
           <li>The hero drawing and the sample scene are illustrations written as code. No image was produced by an image-generation model.</li>
         </ul>

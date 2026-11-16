@@ -27,7 +27,12 @@ window.ACK = (function () {
     { id: 22, text: 'Republic of Kazakhstan. SN RK 3.06-01-2011 "Accessibility of buildings and structures for people with limited mobility" and SP RK 3.06-101-2012 "Design of buildings and structures with accessibility for people with limited mobility. General provisions."', url: 'https://www.gov.kz/uploads/2021/5/14/0111e832e36e8e3348a4f8cce36aebf5_original.1102336.doc' },
     { id: 23, text: 'Law of the Republic of Kazakhstan No. 230-VIII "On Artificial Intelligence," 17 November 2025, in force 18 January 2026. Summary: EY Kazakhstan legal alert, December 2025.', url: 'https://www.ey.com/en_kz/technical/tax-alerts/2025/12/law-on-artificial-intelligence-kazakhstan' },
     { id: 24, text: 'Law of the Republic of Kazakhstan No. 94-V "On Personal Data and their Protection," 21 May 2013.', url: 'https://adilet.zan.kz/eng/docs/Z1300000094' },
-    { id: 25, text: 'Ministry of Labour and Social Protection of the Population of the Republic of Kazakhstan. Interactive Accessibility Map, regional view. Facility counts per region as displayed on 15 November 2026 (read by the author from the map; total 43,472).', url: 'https://inva.gov.kz/ru/map/207' }
+    { id: 25, text: 'Ministry of Labour and Social Protection of the Population of the Republic of Kazakhstan. Interactive Accessibility Map, regional view. Facility counts per region as displayed on 15 November 2026 (read by the author from the map; total 43,472).', url: 'https://inva.gov.kz/ru/map/207' },
+    { id: 26, text: 'Koishibayev, M. M., Nechayeva, Y. L., and Kapitsyn, V. M. (2020). "National plans to ensure the rights of persons with disabilities in Kazakhstan: amendments to the legislation." Disability & Society, 35(8), 1355-1359.', url: 'https://doi.org/10.1080/09687599.2019.1698153' },
+    { id: 27, text: 'Allan, J., and Omarova, T. (2022). "Disability and inclusion in Kazakhstan." Disability & Society, 37(7), 1067-1084.', url: 'https://doi.org/10.1080/09687599.2020.1867073' },
+    { id: 28, text: 'Moreira, R. S., Moita, S., Torres, J. M., Gouveia, F., Dinis, M. A. P., Ferreira, D., Araujo, M., and Guerreiro, M. J. S. (2025). "Automating City Accessibility Constraints Mapping Through AI-Assisted Scanning of Street View Imagery." IET Smart Cities, 7(1), e70020.', url: 'https://doi.org/10.1049/smc2.70020' },
+    { id: 29, text: 'Fraser et al. (2024). Placeholder: full citation to be added by the author.', url: '' },
+    { id: 30, text: 'Sfounis et al. (2024). Placeholder: full citation to be added by the author.', url: '' }
   ];
 
   /* Registered people with disabilities, thousands. t = decimal year. */
@@ -107,39 +112,36 @@ window.ACK = (function () {
   };
 
   var approaches = [
-    { key: 'all', label: 'All approaches' },
-    { key: 'crowd', label: 'Crowdsourced audits' },
-    { key: 'hybrid', label: 'People plus machine' },
-    { key: 'auto', label: 'Automated detection' },
-    { key: 'kz', label: 'Kazakhstan built environment' },
-    { key: 'critical', label: 'Critical disability studies' }
+    { key: 'all', label: 'All topics' },
+    { key: 'policy', label: 'Disability rights and policy implementation' },
+    { key: 'spatial', label: 'Spatial accessibility and urban infrastructure' },
+    { key: 'tech', label: 'Participatory and technology-assisted assessment' }
   ];
 
+  /* Six sources chosen by the author, two per topic.
+     summary: what the source covers. Leave finding or relevance as '' to show a placeholder. */
   var papers = [
-    { ref: 12, approach: 'crowd', cite: 'Saha et al., 2019', title: 'Project Sidewalk',
-      method: 'Volunteers and paid workers label problems in street-level imagery.',
-      finding: 'In 18 months, 797 users placed 205,385 labels across 2,941 miles of Washington, DC. Paid workers reached 67.8% recall and 68.8% precision.',
-      limit: 'Imagery can be out of date, and label types follow United States standards.' },
-    { ref: 13, approach: 'hybrid', cite: 'Hara et al., 2014', title: 'Tohme',
-      method: 'A controller sends each scene either to people or to computer vision followed by human verification.',
-      finding: 'Across 1,086 scenes and 403 workers, quality was similar to manual labelling with 13% less human time. Vision alone found 67% of curb ramps.',
-      limit: 'Covers curb ramps only, in four North American cities.' },
-    { ref: 14, approach: 'auto', cite: 'Weld et al., 2019', title: 'Deep learning on streetscape imagery',
-      method: 'A neural network trained on Project Sidewalk labels, using image and location features.',
-      finding: 'Curb ramps: 78.7% recall, 33.7% precision. Missing curb ramps: 58.6% recall, 12.0% precision. Better than earlier automated methods.',
-      limit: 'Errors rise with low resolution, poor lighting and look-alike features such as crosswalks.' },
-    { ref: 15, approach: 'auto', cite: 'Liu et al., 2024', title: 'Fine-grained sidewalk assessment',
-      method: 'Vision transformers classify 33 condition tags, such as a missing tactile warning.',
-      finding: '13 of 33 tags reached a weighted F1 of 0.7 or more on cleaned data. Noisier training data roughly halved curb-ramp tag scores.',
-      limit: 'Severity is not inferred. Rare conditions perform poorly.' },
-    { ref: 16, approach: 'kz', cite: 'Abdrassilova and Murzagaliyeva, 2020', title: 'Accessibility as a quality criterion in Almaty',
-      method: 'Architectural and planning analysis of the urban environment for people with limited mobility.',
-      finding: 'Argues that barrier-free access is a core measure of the quality of a city\'s built environment and proposes planning directions.',
-      limit: 'Qualitative. No measurement of how many buildings comply.' },
-    { ref: 17, approach: 'critical', cite: 'Bennett and Keyes, 2020', title: 'What is the point of fairness?',
-      method: 'Disability studies critique using two computer-vision case studies.',
-      finding: 'Fairness alone can reinforce existing power. The authors call for justice: asking who controls a system and whom it serves.',
-      limit: 'Conceptual. Offers no test of a deployed system.' }
+    { ref: 26, approach: 'policy', scope: 'Kazakhstan', cite: 'Koishibayev et al., 2020',
+      title: 'National plans to ensure the rights of persons with disabilities in Kazakhstan',
+      summary: 'Reviews how Kazakhstan changed its laws after ratifying the UN disability convention. Finds the legislation largely in line with the convention, and names the lack of effective mechanisms for carrying policy out as the main problem.',
+      finding: '', relevance: '' },
+    { ref: 27, approach: 'policy', scope: 'Kazakhstan', cite: 'Allan and Omarova, 2022',
+      title: 'Disability and inclusion in Kazakhstan',
+      summary: '', finding: '', relevance: '' },
+    { ref: 16, approach: 'spatial', scope: 'Kazakhstan', cite: 'Abdrassilova and Murzagaliyeva, 2020',
+      title: 'Accessibility as a criterion of quality in an architectural spatial environment',
+      summary: 'Architectural and planning analysis of Almaty for people with limited mobility. Argues that barrier-free access is a core measure of the quality of a city\'s built environment.',
+      finding: '', relevance: '' },
+    { ref: 29, approach: 'spatial', scope: 'Global', cite: 'Fraser et al., 2024',
+      title: 'Title to be added',
+      summary: '', finding: '', relevance: '' },
+    { ref: 30, approach: 'tech', scope: 'Global', cite: 'Sfounis et al., 2024',
+      title: 'Title to be added',
+      summary: '', finding: '', relevance: '' },
+    { ref: 28, approach: 'tech', scope: 'Global', cite: 'Moreira et al., 2025',
+      title: 'Automating city accessibility constraints mapping with AI and street view imagery',
+      summary: 'Presents ACAMAI, a pipeline that trains an object detector on Google Street View panoramas to find and locate accessibility constraints, then places them on OpenStreetMap.',
+      finding: '', relevance: '' }
   ];
 
   var features = [

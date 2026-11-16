@@ -50,7 +50,8 @@
 
   /* ---------- references ---------- */
   $('refs').innerHTML = D.REFS.map(function (r) {
-    return '<li id="ref-' + r.id + '">' + esc(r.text) + ' <a href="' + esc(r.url) + '" rel="noopener" target="_blank">' + esc(r.url.replace(/^https?:\/\//, '').slice(0, 70)) + (r.url.length > 78 ? '…' : '') + '<span class="sr-only"> (opens in a new tab)</span></a></li>';
+    var link = r.url ? ' <a href="' + esc(r.url) + '" rel="noopener" target="_blank">' + esc(r.url.replace(/^https?:\/\//, '').slice(0, 70)) + (r.url.length > 78 ? '…' : '') + '<span class="sr-only"> (opens in a new tab)</span></a>' : '';
+    return '<li id="ref-' + r.id + '"' + (r.url ? '' : ' class="ref-pending"') + '>' + esc(r.text) + link + '</li>';
   }).join('');
 
   /* ---------- charts ---------- */
@@ -86,9 +87,10 @@
       return '<button type="button" aria-pressed="' + (a.key === approach) + '" data-key="' + a.key + '">' + esc(a.label) + '</button>';
     }).join('');
     var list = D.papers.filter(function (p) { return approach === 'all' || p.approach === approach; });
+    var ph = function (what) { return '<span class="slot">Placeholder: ' + what + ' to be added by the author.</span>'; };
     papers.innerHTML = list.map(function (p) {
-      return '<article class="paper"><p class="paper-approach">' + esc(approachLabel[p.approach]) + '</p><h3>' + esc(p.title) + '</h3><p class="paper-cite">' + esc(p.cite) + ' <a class="cite" href="#ref-' + p.ref + '">[' + p.ref + ']</a></p>' +
-        '<dl><dt>Method</dt><dd>' + esc(p.method) + '</dd><dt>Finding</dt><dd>' + esc(p.finding) + '</dd><dt>Limit</dt><dd>' + esc(p.limit) + '</dd></dl></article>';
+      return '<article class="paper"><p class="paper-approach">' + esc(approachLabel[p.approach]) + '</p><h3>' + esc(p.title) + '</h3><p class="paper-cite">' + esc(p.cite) + ' <a class="cite" href="#ref-' + p.ref + '">[' + p.ref + ']</a> <span class="scope">' + esc(p.scope) + '</span></p>' +
+        '<dl><dt>What it covers</dt><dd>' + (p.summary ? esc(p.summary) : ph('summary')) + '</dd><dt>Key finding</dt><dd>' + (p.finding ? esc(p.finding) : ph('key finding')) + '</dd><dt>Relevance to AccessCheck KZ</dt><dd>' + (p.relevance ? esc(p.relevance) : ph('relevance')) + '</dd></dl></article>';
     }).join('');
   }
   chips.addEventListener('click', function (e) {
