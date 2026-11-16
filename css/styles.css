@@ -171,16 +171,16 @@ h4 { font-size: 1rem; font-weight: 700; line-height: 1.3; }
 .limits p { margin-top: 6px; font-size: 0.97rem; line-height: 1.55; color: var(--soft); }
 
 /* ---------- research ---------- */
-.chips { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px; }
-.chips button { border: 1.5px solid var(--line); background: var(--paper); border-radius: 999px; padding: 8px 15px; font-size: 0.9rem; font-weight: 600; cursor: pointer; color: var(--soft); }
-.chips button:hover { border-color: var(--blue); color: var(--ink); }
-.chips button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
-.papers { margin-top: 22px; display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 0; border-top: 2px solid var(--ink); border-left: 1px solid var(--line); }
-.paper { padding: 22px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.paper-approach { font-size: 0.8rem; font-weight: 700; color: var(--blue-deep); }
-.band .paper h3 { margin-top: 6px; font-size: 1.1rem; }
-.paper-cite { margin-top: 2px; font-size: 0.86rem; color: var(--soft); }
-.scope { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: var(--sky); color: var(--blue-deep); font-size: 0.74rem; font-weight: 700; }
+.topics { margin-top: 36px; display: grid; gap: 44px; }
+.topic-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; padding-bottom: 14px; border-bottom: 2px solid var(--ink); }
+.topic-head .n { width: 32px; height: 32px; background: var(--ink); color: #fff; font-size: 0.95rem; }
+.band .topic-head h3 { margin-top: 0; font-size: 1.28rem; }
+.scope { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--sky); color: var(--blue-deep); font-size: 0.78rem; font-weight: 700; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.paper { padding: 24px 28px 26px 0; }
+.paper + .paper { padding: 24px 0 26px 28px; border-left: 1px solid var(--line); }
+.paper h4 { font-size: 1.12rem; line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance; }
+.paper-cite { margin-top: 4px; font-size: 0.88rem; color: var(--soft); }
 .slot { display: inline-block; padding: 3px 8px; border: 1.5px dashed #8FA3C4; border-radius: 6px; background: #F7F9FD; font-size: 0.84rem; color: var(--soft); }
 .refs li.ref-pending { border: 1.5px dashed #8FA3C4; background: #F7F9FD; }
 .paper dl { margin-top: 14px; display: grid; gap: 10px; font-size: 0.92rem; line-height: 1.5; }
@@ -348,6 +348,9 @@ input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; accent-
   .levels { grid-template-columns: 1fr; }
   .levels button { border-right: 0; border-bottom: 1px solid var(--line); }
   .chart-card, .demo-stage, .demo-form, .report, .calc-in, .calc-out, .versus-card { padding: 18px; }
+  .pair { grid-template-columns: 1fr; }
+  .paper, .paper + .paper { padding: 20px 0; border-left: 0; }
+  .paper + .paper { border-top: 1px solid var(--line); }
   .mrow { grid-template-columns: 1fr 1fr; }
   .mhead { display: none; }
   .mrow > span:first-child, .mrow > .res { grid-column: 1 / -1; }

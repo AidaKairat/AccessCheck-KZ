@@ -24,7 +24,7 @@ To preview on your computer, open `index.html` in a browser.
 
 | To change | Edit |
 |---|---|
-| Statistics, chart data, the six papers, references | `js/data.js` |
+| Statistics, chart data, the three research topics and six readings, references | `js/data.js` |
 | Text of the sections | `index.html` |
 | Colours and type | the `:root` block at the top of `css/styles.css` |
 | Assessment logic | `js/demo.js` |
@@ -36,7 +36,7 @@ Every number in `js/data.js` carries a `ref` that points to an entry in the `REF
 Search `index.html` for `class="placeholder"`. Each one marks evidence that could not be verified and needs to be filled in or removed:
 
 - the adapted share of facilities for each region (the map gives only the number registered)
-- in "Current research": the relevance line for each source, the key finding for Abdrassilova and Murzagaliyeva (2020), and your own debates and gaps
+- in "Current research": the relevance line for each source, and your own debates and gaps
 - numeric limits from SP RK 3.06-101-2012 (ramp slope, widths, threshold)
 - costs not estimated (training, labelling, development, fixing barriers)
 - your own statement on how you used AI

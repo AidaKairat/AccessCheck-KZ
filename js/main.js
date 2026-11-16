@@ -79,26 +79,17 @@
     });
   });
 
-  /* ---------- research filter ---------- */
-  var chips = $('approachChips'), papers = $('papers'), approach = 'all';
-  var approachLabel = {}; D.approaches.forEach(function (a) { approachLabel[a.key] = a.label; });
-  function drawPapers() {
-    chips.innerHTML = D.approaches.map(function (a) {
-      return '<button type="button" aria-pressed="' + (a.key === approach) + '" data-key="' + a.key + '">' + esc(a.label) + '</button>';
-    }).join('');
-    var list = D.papers.filter(function (p) { return approach === 'all' || p.approach === approach; });
+  /* ---------- research: three topics, two readings per row ---------- */
+  (function () {
     var ph = function (what) { return '<span class="slot">Placeholder: ' + what + ' to be added by the author.</span>'; };
-    papers.innerHTML = list.map(function (p) {
-      return '<article class="paper"><p class="paper-approach">' + esc(approachLabel[p.approach]) + '</p><h3>' + esc(p.title) + '</h3><p class="paper-cite">' + esc(p.cite) + ' <a class="cite" href="#ref-' + p.ref + '">[' + p.ref + ']</a> <span class="scope">' + esc(p.scope) + '</span></p>' +
-        '<dl><dt>What it covers</dt><dd>' + (p.summary ? esc(p.summary) : ph('summary')) + '</dd><dt>Key finding</dt><dd>' + (p.finding ? esc(p.finding) : ph('key finding')) + '</dd><dt>Relevance to AccessCheck KZ</dt><dd>' + (p.relevance ? esc(p.relevance) : ph('relevance')) + '</dd></dl></article>';
+    $('papers').innerHTML = D.approaches.map(function (a, n) {
+      var cards = D.papers.filter(function (p) { return p.approach === a.key; }).map(function (p) {
+        return '<article class="paper"><h4>' + esc(p.title) + '</h4><p class="paper-cite">' + esc(p.cite) + ' <a class="cite" href="#ref-' + p.ref + '">[' + p.ref + ']</a></p>' +
+          '<dl><dt>What it covers</dt><dd>' + (p.summary ? esc(p.summary) : ph('summary')) + '</dd><dt>Key finding</dt><dd>' + (p.finding ? esc(p.finding) : ph('key finding')) + '</dd><dt>Relevance to AccessCheck KZ</dt><dd>' + (p.relevance ? esc(p.relevance) : ph('relevance')) + '</dd></dl></article>';
+      }).join('');
+      return '<section class="topic" aria-labelledby="topic-' + a.key + '"><header class="topic-head"><span class="n">' + (n + 1) + '</span><h3 id="topic-' + a.key + '">' + esc(a.label) + '</h3><span class="scope">' + esc(a.scope) + '</span></header><div class="pair">' + cards + '</div></section>';
     }).join('');
-  }
-  chips.addEventListener('click', function (e) {
-    var b = e.target.closest('button'); if (!b) return;
-    approach = b.getAttribute('data-key'); drawPapers();
-    var again = chips.querySelector('[data-key="' + approach + '"]'); if (again) again.focus();
-  });
-  drawPapers();
+  })();
 
   /* ---------- cost estimate ---------- */
   function val(id) { var v = parseFloat($(id).value); return isFinite(v) && v >= 0 ? v : 0; }

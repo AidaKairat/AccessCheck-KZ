@@ -159,10 +159,9 @@
 <section id="research" class="band">
   <div class="wrap">
     <h2>Current research</h2>
-    <p class="intro">Six academic sources in three topics: two on Kazakhstan's disability policy, two on cities and their infrastructure, and two on tools for assessing accessibility. Choose a topic to filter them.</p>
+    <p class="intro">Six academic sources in three topics, two readings each: Kazakhstan's disability policy, the built environment of Almaty, and tools for assessing accessibility.</p>
 
-    <div class="chips" role="group" aria-label="Filter by topic" id="approachChips"></div>
-    <div class="papers" id="papers"></div>
+    <div class="topics" id="papers"></div>
 
     <div class="two-col">
       <div>
@@ -170,8 +169,8 @@
         <dl class="debates">
           <dt>Law on paper or change on the ground</dt>
           <dd>Koishibayev and colleagues find Kazakhstan's legislation largely consistent with the UN convention, but without effective mechanisms to carry it out.<a class="cite" href="#ref-26">[26]</a> The UN committee's 2024 review makes a similar point about the lack of binding enforcement of accessibility standards.<a class="cite" href="#ref-4">[4]</a></dd>
-          <dt>Accessibility as distance or as usability</dt>
-          <dd>Fraser and colleagues measure access as how far buildings are from community resources.<a class="cite" href="#ref-29">[29]</a> The assessment tools measure barriers along the route, such as missing ramps and obstacles.<a class="cite" href="#ref-28">[28]</a><a class="cite" href="#ref-30">[30]</a> Koishibayev and colleagues add a third meaning: a ramp can be present and still fail the regulations.<a class="cite" href="#ref-26">[26]</a></dd>
+          <dt>Satisfactory for pedestrians, or accessible for everyone</dt>
+          <dd>Tolegen and colleagues rate pedestrian access in an Almaty district as satisfactory overall, while listing missing ramps among its faults.<a class="cite" href="#ref-29">[29]</a> Abdrassilova and Murzagaliyeva, looking at the same city from the position of low-mobility groups, conclude that people with disabilities generally cannot move around safely without help.<a class="cite" href="#ref-16">[16]</a></dd>
           <dt>Detect from images or ask the people affected</dt>
           <dd>Moreira and colleagues automate detection from street imagery.<a class="cite" href="#ref-28">[28]</a> Sfounis and colleagues start from focus groups with people with disabilities to decide what a model should measure at all.<a class="cite" href="#ref-30">[30]</a></dd>
         </dl>
@@ -180,8 +179,9 @@
       <div>
         <h3>Gaps this project responds to</h3>
         <ul class="gaps">
-          <li><b>The three topics rarely meet.</b> In this set, the Kazakhstan sources deal with law, education policy and architecture, while the assessment tools were developed and tested in Portugal and Greece.<a class="cite" href="#ref-28">[28]</a><a class="cite" href="#ref-30">[30]</a> AccessCheck KZ sits where they overlap.</li>
-          <li><b>Compliance is named as the problem but not measured.</b> Ramps that fail the regulations are reported for Kazakhstan,<a class="cite" href="#ref-26">[26]</a> yet the detection pipeline in this set identifies whether a ramp is present or missing, not whether it complies.<a class="cite" href="#ref-28">[28]</a></li>
+          <li><b>The three topics rarely meet.</b> The Kazakhstan sources deal with law, education policy and architecture. The assessment tools were developed and tested in Portugal and Greece.<a class="cite" href="#ref-28">[28]</a><a class="cite" href="#ref-30">[30]</a> AccessCheck KZ sits where they overlap.</li>
+          <li><b>Compliance is named as the problem but not measured at scale.</b> Ramps that fail the regulations are reported for Kazakhstan in the policy source and in both Almaty studies.<a class="cite" href="#ref-26">[26]</a><a class="cite" href="#ref-16">[16]</a><a class="cite" href="#ref-29">[29]</a> The detection pipeline in this set identifies whether a ramp is present or missing, not whether it complies.<a class="cite" href="#ref-28">[28]</a></li>
+          <li><b>Evidence stops at one city.</b> Both built-environment studies rely on manual field surveys in Almaty, one of them in part of a single district.<a class="cite" href="#ref-16">[16]</a><a class="cite" href="#ref-29">[29]</a> Nothing in the set covers other regions or rural areas.</li>
         </ul>
         <p class="placeholder"><b>Placeholder, author content.</b> Add the gaps you identify in your six sources here.</p>
       </div>
@@ -254,7 +254,7 @@
             <div class="mrow mhead" role="row"><span role="columnheader">Item</span><span role="columnheader">Measured</span><span role="columnheader">Limit</span><span role="columnheader">Result</span></div>
             <div id="measureRows"></div>
           </div>
-          <p class="placeholder small"><b>Placeholder, evidence needed.</b> Limits are left blank on purpose. The numeric requirements in SP RK 3.06-101-2012 could not be verified from an open copy. Enter them from the official text.</p>
+          <p class="placeholder small"><b>Placeholder, evidence needed.</b> Limits are left blank on purpose. One source reports a maximum ramp gradient of 1:20 (5%) and handrails at 0.7 and 0.9 m under the earlier SP RK 3.06-15-2005.<a class="cite" href="#ref-16">[16]</a> Confirm the current values in SP RK 3.06-101-2012 before entering them.</p>
           <p class="small evidence">What a model would face here: none of the studies reviewed measures compliance from a single photo.</p>
         </fieldset>
 
@@ -399,7 +399,7 @@
         <h3>How AI was used to make this site</h3>
         <ul class="plain">
           <li>The site's code, layout and first-draft text were generated with Claude (Anthropic) on 15 November 2026 from the author's written brief.</li>
-          <li>The six sources in "Current research" were chosen by the author. The assistant read five of them from PDFs supplied by the author and drafted the summaries and key findings shown; the Almaty study [16] was summarised from its abstract only.</li>
+          <li>The six sources in "Current research" were chosen by the author. The assistant read them from PDFs supplied by the author and drafted the summaries, key findings, debates and gaps shown.</li>
           <li>Other sources were found through web search by the same assistant. Figures were taken from the pages listed below and paraphrased.</li>
           <li>Results for reference [14] were read from the authors' conference slides, not the paper's tables.</li>
           <li>The hero drawing and the sample scene are illustrations written as code. No image was produced by an image-generation model.</li>
