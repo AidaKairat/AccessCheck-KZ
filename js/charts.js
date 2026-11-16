@@ -48,8 +48,8 @@
     o = o || {};
     var W = Math.max(280, el.clientWidth || 600);
     var narrow = W < 420;
-    var labelW = narrow ? 0 : Math.min(190, W * 0.34);
-    var rowH = narrow ? 50 : 34, top = o.target ? 26 : 6, right = 64;
+    var labelW = narrow ? 0 : Math.min(210, W * 0.34);
+    var rowH = narrow ? 56 : (rows.length > 8 ? 34 : 46), top = o.target ? 28 : 6, right = 84;
     var H = top + rows.length * rowH + 6;
     var plotW = W - labelW - right;
     var max = o.max || Math.max.apply(null, rows.map(function (r) { return r.value; })) * 1.1 || 1;
@@ -58,14 +58,14 @@
     var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="' + H + '" role="img" aria-label="' + esc(o.aria || 'Bar chart') + '">';
     s += '<line x1="' + labelW + '" y1="' + top + '" x2="' + labelW + '" y2="' + (H - 6) + '" stroke="' + C.grid + '" stroke-width="1"/>';
     rows.forEach(function (r, i) {
-      var y = top + i * rowH, barY = narrow ? y + 22 : y + 8, barH = 18;
+      var barH = narrow ? 20 : (rows.length > 8 ? 20 : 26), y = top + i * rowH, barY = narrow ? y + 24 : y + (rowH - barH) / 2;
       var w = Math.max(9, sx(r.value) - labelW);
       var shown = fmt(r.value, dec) + unit;
-      var lx = narrow ? 0 : labelW - 10, ly = narrow ? y + 14 : barY + 13;
+      var lx = narrow ? 0 : labelW - 10, ly = narrow ? y + 16 : barY + barH / 2 + 5;
       s += '<text x="' + lx + '" y="' + ly + '" text-anchor="' + (narrow ? 'start' : 'end') + '" class="c-label">' + esc(r.label) + '</text>';
-      s += '<path tabindex="0" role="img" aria-label="' + esc(r.label + ': ' + shown) + '" data-tip="' + esc(tipHtml(r.label, shown, r.ref)) + '" class="c-mark" d="M' + labelW + ' ' + barY + ' h' + (w - 4) + ' a4 4 0 0 1 4 4 v' + (barH - 8) + ' a4 4 0 0 1 -4 4 h-' + (w - 4) + ' Z" fill="' + (r.muted ? C.muted : C.bar) + '"/>';
-      if (o.target) s += '<text x="' + (labelW + w - 8) + '" y="' + (barY + 13) + '" text-anchor="end" class="c-value" style="fill:#fff" aria-hidden="true">' + esc(shown) + '</text>';
-      else s += '<text x="' + (labelW + w + 8) + '" y="' + (barY + 13) + '" class="c-value">' + esc(shown) + '</text>';
+      s += '<path tabindex="0" role="img" aria-label="' + esc(r.label + ': ' + shown) + '" data-tip="' + esc(tipHtml(r.label, shown, r.ref)) + '" class="c-mark c-bar" d="M' + labelW + ' ' + barY + ' h' + (w - 4) + ' a4 4 0 0 1 4 4 v' + (barH - 8) + ' a4 4 0 0 1 -4 4 h-' + (w - 4) + ' Z" fill="' + (r.muted ? C.muted : C.bar) + '"/>';
+      if (o.target) s += '<text x="' + (labelW + w - 8) + '" y="' + (barY + barH / 2 + 5) + '" text-anchor="end" class="c-value" style="fill:#fff" aria-hidden="true">' + esc(shown) + '</text>';
+      else s += '<text x="' + (labelW + w + 8) + '" y="' + (barY + barH / 2 + 5) + '" class="c-value">' + esc(shown) + '</text>';
     });
     if (o.target) {
       var tx = sx(o.target.value);
@@ -82,7 +82,7 @@
   /* Time series with a real time axis. pts: [{t, label, value, ref}] */
   function line(el, pts, o) {
     o = o || {};
-    var W = Math.max(280, el.clientWidth || 700), H = 260;
+    var W = Math.max(280, el.clientWidth || 700), H = 320;
     var m = { l: 46, r: 62, t: 18, b: 34 };
     var x0 = o.x0, x1 = o.x1, y0 = o.y0, y1 = o.y1;
     function sx(t) { return m.l + (t - x0) / (x1 - x0) * (W - m.l - m.r); }
@@ -96,10 +96,10 @@
     for (var yr = Math.ceil(x0); yr <= Math.floor(x1); yr += step) {
       s += '<text x="' + sx(yr) + '" y="' + (H - 10) + '" text-anchor="middle" class="c-axis">' + yr + '</text>';
     }
-    s += '<path d="' + pts.map(function (p, i) { return (i ? 'L' : 'M') + sx(p.t).toFixed(1) + ' ' + sy(p.value).toFixed(1); }).join(' ') + '" fill="none" stroke="' + C.bar + '" stroke-width="2" stroke-linejoin="round"/>';
+    s += '<path d="' + pts.map(function (p, i) { return (i ? 'L' : 'M') + sx(p.t).toFixed(1) + ' ' + sy(p.value).toFixed(1); }).join(' ') + '" fill="none" class="c-line" stroke="' + C.bar + '" stroke-width="3" stroke-linejoin="round"/>';
     pts.forEach(function (p, i) {
       var shown = fmt(p.value, 1) + ' thousand';
-      s += '<circle tabindex="0" role="img" aria-label="' + esc(p.label + ': ' + shown) + '" data-tip="' + esc(tipHtml(p.label, shown, p.ref)) + '" class="c-mark" cx="' + sx(p.t) + '" cy="' + sy(p.value) + '" r="6" fill="' + C.bar + '" stroke="#fff" stroke-width="2"/>';
+      s += '<circle tabindex="0" role="img" aria-label="' + esc(p.label + ': ' + shown) + '" data-tip="' + esc(tipHtml(p.label, shown, p.ref)) + '" class="c-mark c-dot" cx="' + sx(p.t) + '" cy="' + sy(p.value) + '" r="7" fill="' + C.bar + '" stroke="#fff" stroke-width="2"/>';
       if (i === 0) s += '<text x="' + sx(p.t) + '" y="' + (sy(p.value) - 12) + '" text-anchor="middle" class="c-value">' + fmt(p.value, 1) + '</text>';
       if (i === pts.length - 1) s += '<text x="' + (sx(p.t) + 10) + '" y="' + (sy(p.value) + 4) + '" class="c-value">' + fmt(p.value, 0) + '</text>';
     });

@@ -28,6 +28,8 @@ To preview on your computer, open `index.html` in a browser.
 | Text of the sections | `index.html` |
 | Colours and type | the `:root` block at the top of `css/styles.css` |
 | Assessment logic | `js/demo.js` |
+| Three-level explorer text and labels | `explorer` in `js/data.js` |
+| Key findings beside the regional chart | `findN` and `find` in `js/data.js` |
 
 Every number in `js/data.js` carries a `ref` that points to an entry in the `REFS` list, so a figure and its source stay together.
 

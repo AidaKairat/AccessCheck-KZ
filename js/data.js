@@ -58,6 +58,8 @@ window.ACK = (function () {
     rural: {
       sub: 'Share of people with disabilities living in rural areas. Nationally it is 44.8%, according to the UN committee\'s 2024 concluding observations, which cite Kazakhstan\'s initial report. The committee noted limited information about disability policies for rural residents. The regional figures come from a different source (February 2025), which gave 40.1% nationally, so compare them with care. This shows where people live. It is not an infrastructure-accessibility rate.',
       unit: '%', max: 100,
+      findN: 'Four in five',
+      find: 'In Almaty Region, 81.1% of people with disabilities live in rural areas, against 44.8% nationally. Rural residents are the hardest to reach with audits.',
       rows: [
         { label: 'Almaty Region', value: 81.1, ref: 2 },
         { label: 'Turkistan Region', value: 73.6, ref: 2 },
@@ -69,6 +71,8 @@ window.ACK = (function () {
     employ: {
       sub: 'Share of working-age people with disabilities in employment, as reported by the minister in April 2026. The three highest and three lowest regions named.',
       unit: '%', max: 100,
+      findN: '22-point gap',
+      find: 'Employment among working-age people with disabilities ranges from 44.5% in Ulytau Region to 22.4% in Almaty Region.',
       rows: [
         { label: 'Ulytau Region', value: 44.5, ref: 5 },
         { label: 'Karaganda Region', value: 38.5, ref: 5 },
@@ -81,6 +85,8 @@ window.ACK = (function () {
     facilities: {
       sub: 'Number of facilities shown on the official accessibility map for each region and city, as displayed on 15 November 2026. The map shows how many facilities are registered, not how many of them are adapted.',
       unit: '', max: 10500, decimals: 0, unitLabel: 'Facilities on the map',
+      findN: 'One city, one fifth',
+      find: 'Almaty city has 9,342 of the 43,472 facilities on the map, about 21%. Ulytau Region has 394. The count shows registration, not how many are adapted.',
       rows: [
         { label: 'Almaty city', value: 9342, ref: 21 },
         { label: 'Turkistan Region', value: 3711, ref: 21 },
@@ -200,7 +206,62 @@ window.ACK = (function () {
     3: { status: 'serious', head: 'No.', body: 'A parked car blocks the foot of the ramp. Nobody using a wheelchair can reach the door.' }
   };
 
-  return { REFS: REFS, population: population, adapted: adapted, adaptedTarget: adaptedTarget,
+  /* Three-level explorer in the AI solution section.
+     tags: labels placed over the drawn scene, x and y in per cent. kind 'ai' or 'human'. */
+  var explorer = {
+    1: {
+      desc: 'Object detection. This is the task existing research does best.',
+      ai: [
+        'Ramps, steps, doors, handrails and obstacles visible in the frame',
+        'Where each feature sits in the photo',
+        'In one study, a detector trained with local images found 91% of curb ramps, with 85% of its detections correct <a class="cite" href="#ref-24">[24]</a>'
+      ],
+      human: [
+        'Confirm or correct every detection',
+        'Anything hidden or outside the frame',
+        'Whether the photo is still up to date <a class="cite" href="#ref-11">[11]</a>'
+      ],
+      tags: [
+        { x: 27, y: 70, label: 'Ramp', kind: 'ai' }, { x: 67, y: 74, label: 'Steps', kind: 'ai' },
+        { x: 50, y: 42, label: 'Door', kind: 'ai' }, { x: 37, y: 58, label: 'Handrail', kind: 'ai' },
+        { x: 11, y: 66, label: 'Vehicle', kind: 'ai' }
+      ]
+    },
+    2: {
+      desc: 'Measurement against Kazakhstan\'s building rules. A single photo rarely gives reliable measurements.',
+      ai: [
+        'Ramps that look steep or narrow, flagged for inspection',
+        'A list of the features that need measuring'
+      ],
+      human: [
+        'Measure slope, width and threshold on site',
+        'Compare with SN RK 3.06-01-2011 and SP RK 3.06-101-2012 <a class="cite" href="#ref-18">[18]</a>',
+        'None of the seven studies reviewed measures compliance from a single photo'
+      ],
+      tags: [
+        { x: 24, y: 62, label: 'Looks steep', kind: 'ai' }, { x: 30, y: 96, label: 'Slope: measure on site', kind: 'human' },
+        { x: 50, y: 42, label: 'Door width: measure', kind: 'human' }, { x: 56, y: 70, label: 'Threshold: measure', kind: 'human' }
+      ]
+    },
+    3: {
+      desc: 'Whether a person could get from the street through the door, today, without help.',
+      ai: [
+        'Visible obstacles on the route, such as a parked car',
+        'Conditions that show in the photo, such as snow on a ramp'
+      ],
+      human: [
+        'People with disabilities judge whether they can get in unaided',
+        'Door weight, a working call button, lighting, conditions on the day',
+        'None of the studies reviewed judges whether an entrance is usable unaided'
+      ],
+      tags: [
+        { x: 12, y: 60, label: 'Route blocked', kind: 'ai' }, { x: 50, y: 42, label: 'Can it be opened unaided?', kind: 'human' },
+        { x: 34, y: 96, label: 'Usable in snow and ice?', kind: 'human' }
+      ]
+    }
+  };
+
+  return { explorer: explorer, REFS: REFS, population: population, adapted: adapted, adaptedTarget: adaptedTarget,
     equippedFor: equippedFor, regions: regions, approaches: approaches, papers: papers,
     features: features, measures: measures, usability: usability,
     sceneSVG: sceneSVG, sceneAnswers: sceneAnswers };

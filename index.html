@@ -7,7 +7,7 @@
 <meta name="description" content="A research project on accessibility barriers for people with disabilities in Kazakhstan, and a proposal for an AI-assisted photo assessment of ramps, sidewalks and entrances.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231257D6'/%3E%3Cpath d='M6 23 L26 23 L26 12 Z' fill='%23fff'/%3E%3C/svg%3E">
 </head>
@@ -28,7 +28,7 @@
       <li><a href="#solution">AI solution</a></li>
       <li><a href="#cost">The cost of AI</a></li>
       <li><a href="#verdict">Final verdict</a></li>
-      <li><a href="#transparency">Transparency and references</a></li>
+      <li><a href="#transparency">AI transparency</a></li>
     </ol>
   </nav>
   <p class="rail-note">A student research project. The assessment tool on this site is a prototype and runs no AI model.</p>
@@ -49,10 +49,10 @@
 
   <figure class="scene-card" aria-labelledby="sceneCap">
     <div class="scene" id="heroScene" data-level="1"></div>
-    <div class="levels" role="radiogroup" aria-label="Choose a question to ask of this entrance">
-      <button role="radio" aria-checked="true" data-level="1"><span class="n">1</span>Is there a ramp?</button>
-      <button role="radio" aria-checked="false" data-level="2"><span class="n">2</span>Does it meet the standard?</button>
-      <button role="radio" aria-checked="false" data-level="3"><span class="n">3</span>Can someone use it today?</button>
+    <div class="levels" role="radiogroup" aria-label="Choose a level to compare on this entrance">
+      <button role="radio" aria-checked="true" data-level="1"><span class="n">1</span><span><b>Visual presence</b><small>Is there a ramp?</small></span></button>
+      <button role="radio" aria-checked="false" data-level="2"><span class="n">2</span><span><b>Standards compliance</b><small>Does it meet the standard?</small></span></button>
+      <button role="radio" aria-checked="false" data-level="3"><span class="n">3</span><span><b>Functional usability</b><small>Can someone use it today?</small></span></button>
     </div>
     <p class="scene-answer" id="sceneAnswer" aria-live="polite"></p>
     <figcaption id="sceneCap">Drawn illustration of a typical entrance. It is not a real site and not the output of a model.</figcaption>
@@ -65,47 +65,75 @@
     <h2>The problem</h2>
     <p class="intro">About 752,000 people in Kazakhstan are registered as having a disability, 3.7% of the population.<a class="cite" href="#ref-1">[1]</a> Whether they can enter a clinic, a school or a pharmacy depends on a few metres of concrete at the door.</p>
 
-    <div class="facts">
-      <div class="fact">
-        <p class="fact-n">752,000</p>
-        <p class="fact-l">people registered with a disability, April 2026<a class="cite" href="#ref-1">[1]</a></p>
+    <div class="stats" data-reveal>
+      <div class="stat">
+        <p class="stat-n" data-count="752000">752,000</p>
+        <p class="stat-l">people registered with a disability, April 2026<a class="cite" href="#ref-1">[1]</a></p>
       </div>
-      <div class="fact">
-        <p class="fact-n">29,900</p>
-        <p class="fact-l">wheelchair users, and 206,300 people with musculoskeletal conditions, February 2025<a class="cite" href="#ref-2">[2]</a></p>
+      <div class="stat">
+        <p class="stat-n" data-count="29900">29,900</p>
+        <p class="stat-l">wheelchair users, and 206,300 people with musculoskeletal conditions, February 2025<a class="cite" href="#ref-2">[2]</a></p>
       </div>
-      <div class="fact">
-        <p class="fact-n">44.8%</p>
-        <p class="fact-l">of people with disabilities live in rural areas. The UN committee noted limited information about disability policies for rural residents<a class="cite" href="#ref-4">[4]</a></p>
+      <div class="stat">
+        <p class="stat-n" data-count="44.8" data-dec="1" data-suffix="%">44.8%</p>
+        <p class="stat-l">of people with disabilities live in rural areas. The UN committee noted limited information about disability policies for rural residents<a class="cite" href="#ref-4">[4]</a></p>
       </div>
     </div>
 
     <h3>Why Accessibility Numbers Differ?</h3>
     <p>The government and civil society organizations report different levels of accessibility in Kazakhstan. Official statistics may show progress, while independent assessments identify barriers that people with disabilities still face.</p>
-    <p>However, these figures come from different years, samples, and assessment methods, so they cannot be compared directly.</p>
-    <p>The difference highlights an important question: Does officially reported accessibility reflect people's everyday experiences?</p>
 
-    <div class="versus">
-      <article class="versus-card">
+    <div class="versus" data-reveal>
+      <article class="vs-card">
         <h4>Official accessibility map</h4>
-        <p class="versus-n">67%</p>
-        <p>of about 43,000 registered facilities are reported as fully adapted in April 2026, up from 53% in 2024. The target for 2026 is 80%.<a class="cite" href="#ref-1">[1]</a></p>
+        <p class="vs-n">67%</p>
+        <p class="vs-l">of about 43,000 registered facilities reported as fully adapted, April 2026<a class="cite" href="#ref-1">[1]</a></p>
+        <div class="track" role="img" aria-label="Share reported as fully adapted: 53% in 2024, 64% in 2025, 67% in April 2026. The 2026 target is 80%.">
+          <div class="track-fill" style="--w:67%"></div>
+          <span class="track-mark" style="--x:53%"><i></i>53%<small>2024</small></span>
+          <span class="track-mark" style="--x:67%"><i></i>67%<small>2026</small></span>
+          <span class="track-mark target" style="--x:80%"><i></i>80%<small>target</small></span>
+        </div>
       </article>
-      <article class="versus-card alt">
+
+      <div class="vs-mid" aria-hidden="true"><span>≠</span></div>
+
+      <article class="vs-card alt">
         <h4>Civil-society audits</h4>
-        <p class="versus-n">11 of 3,200</p>
-        <p>facilities rated in Ust-Kamenogorsk were accessible to wheelchair users, according to the Accessible Kazakhstan project's regional coordinator. The head of the Tandau Foundation estimated that about 80% of facilities nationally were inaccessible (2021).<a class="cite" href="#ref-3">[3]</a></p>
+        <p class="vs-n">11 of 3,200</p>
+        <p class="vs-l">facilities rated in Ust-Kamenogorsk were accessible to wheelchair users, according to the Accessible Kazakhstan project's regional coordinator<a class="cite" href="#ref-3">[3]</a></p>
+        <div class="dots" id="dots" role="img" aria-label="320 squares, each standing for 10 facilities. About one square is filled, for the 11 accessible facilities."></div>
+        <p class="vs-foot">Each square is 10 facilities. About one was accessible. The head of the Tandau Foundation estimated that about 80% of facilities nationally were inaccessible (2021).<a class="cite" href="#ref-3">[3]</a></p>
       </article>
     </div>
 
+    <div class="nocompare" data-reveal>
+      <p class="nocompare-head">However, these figures come from different years, samples, and assessment methods, so <b>they cannot be compared directly.</b></p>
+      <ul>
+        <li><b>Different years</b>2026 against 2021</li>
+        <li><b>Different samples</b>About 43,000 facilities nationally against 3,200 in one city</li>
+        <li><b>Different definitions</b>Equipment recorded as installed against a person being able to get in</li>
+      </ul>
+    </div>
+
+    <blockquote class="question">The difference highlights an important question: Does officially reported accessibility reflect people's everyday experiences?</blockquote>
+
     <h3>What the United Nations found</h3>
     <p>Kazakhstan ratified the Convention on the Rights of Persons with Disabilities in 2015.<a class="cite" href="#ref-3">[3]</a> In its first review, in March 2024, the UN committee raised three concerns that this project builds on:<a class="cite" href="#ref-4">[4]</a></p>
-    <ul class="plain">
-      <li>Accessibility requirements are narrow and centred on physical items such as ramps, with little information on schools, housing, clinics and shops, especially in rural areas.</li>
-      <li>No legally binding mechanism enforces accessibility standards in public or private buildings.</li>
-      <li>The medical model used for registration leads to people with disabilities being under-counted in national statistics.</li>
+    <ol class="un" data-reveal>
+      <li><b>Narrow requirements</b>Accessibility requirements are narrow and centred on physical items such as ramps, with little information on schools, housing, clinics and shops, especially in rural areas.</li>
+      <li><b>No binding enforcement</b>No legally binding mechanism enforces accessibility standards in public or private buildings.</li>
+      <li><b>Under-counting</b>The medical model used for registration leads to people with disabilities being under-counted in national statistics.</li>
+    </ol>
+
+    <h3>Why photographs</h3>
+    <p>In field monitoring reported by CABAR, pharmacies and clinics failed for ordinary reasons.<a class="cite" href="#ref-3">[3]</a> Each of these is visible in a photograph, which is why photographs are the starting point here.</p>
+    <ul class="fails" data-reveal>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 38h36M22 38V26h8v-6h8v18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>No ramp</li>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 38h36M8 38L40 14v24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>A ramp too steep to use</li>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 40V8h10v32M10 24h6m-3-3l3 3-3 3M38 24h-6m3-3l-3 3 3 3" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/></svg>A narrow door</li>
+      <li><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 38h14v-7h10v7h12M16 8v18M34 8v18" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>A raised threshold</li>
     </ul>
-    <p>In field monitoring reported by CABAR, pharmacies and clinics failed for ordinary reasons: no ramp, a ramp too steep to use, a narrow door, or a raised threshold.<a class="cite" href="#ref-3">[3]</a> Each of these is visible in a photograph, which is why photographs are the starting point here.</p>
   </div>
 </section>
 
@@ -115,26 +143,35 @@
     <h2>Background and data</h2>
     <p class="intro">Every figure below comes from a named public source. Hover or focus a mark to see its value and source, or open the table under each chart.</p>
 
-    <div class="chart-grid">
-      <figure class="chart-card wide">
+    <figure class="viz" data-reveal>
+      <div class="viz-main">
         <h3>Registered people with disabilities</h3>
         <p class="chart-sub">Thousands of people. Points are the dates sources reported, so spacing is uneven.</p>
         <div class="chart" id="chartPop"></div>
-      </figure>
+      </div>
+      <aside class="finding"><p class="finding-k">Key finding</p><p class="finding-n">+78,000</p><p>The registered total rose from 674,200 in 2017 to about 752,000 in April 2026, an increase of roughly 12%.</p></aside>
+    </figure>
 
-      <figure class="chart-card">
+    <figure class="viz" data-reveal>
+      <div class="viz-main">
         <h3>Facilities reported as fully adapted</h3>
         <p class="chart-sub">Share of facilities on the official accessibility map, with the 2026 target.</p>
         <div class="chart" id="chartAdapt"></div>
-      </figure>
+      </div>
+      <aside class="finding"><p class="finding-k">Key finding</p><p class="finding-n">13 points short</p><p>The reported share rose 14 points in two years, from 53% to 67%. It is still 13 points below the 80% target for 2026.</p></aside>
+    </figure>
 
-      <figure class="chart-card">
+    <figure class="viz" data-reveal>
+      <div class="viz-main">
         <h3>Who the map's facilities are equipped for</h3>
         <p class="chart-sub">Thousands of facilities, of 42.9 thousand on the map (2025).</p>
         <div class="chart" id="chartWho"></div>
-      </figure>
+      </div>
+      <aside class="finding"><p class="finding-k">Key finding</p><p class="finding-n">Just over half</p><p>Each group is served by 23 to 24 thousand of the 42.9 thousand facilities, about 54% to 56%. A facility on the map is not equipped for everyone.</p></aside>
+    </figure>
 
-      <figure class="chart-card wide">
+    <figure class="viz" data-reveal>
+      <div class="viz-main">
         <h3>Regional comparisons</h3>
         <div class="seg" role="tablist" aria-label="Regional measure">
           <button role="tab" aria-selected="true" data-set="facilities">Facilities on the map</button>
@@ -143,15 +180,16 @@
         </div>
         <p class="chart-sub" id="regionSub"></p>
         <div class="chart" id="chartRegion"></div>
-      </figure>
-    </div>
+      </div>
+      <aside class="finding" aria-live="polite"><p class="finding-k">Key finding</p><p class="finding-n" id="regionN"></p><p id="regionF"></p></aside>
+    </figure>
 
     <h3>Limits of the available data</h3>
-    <div class="limits">
-      <div><h4>Registration is not prevalence</h4><p>The 3.7% figure counts people registered through medical and social assessment. The UN committee says this approach under-represents people with disabilities.<a class="cite" href="#ref-4">[4]</a> The World Health Organization estimates that about 16% of people worldwide have a significant disability, measured differently.<a class="cite" href="#ref-10">[10]</a></p></div>
-      <div><h4>"Adapted" is not defined the same way twice</h4><p>The official map records certified equipment. Civil-society maps rate whether a person can get in and use the service. In Almaty, 10,700 facilities are listed as fully or partly adapted, yet only 1,600 are adapted for wheelchair users.<a class="cite" href="#ref-9">[9]</a></p></div>
-      <div><h4>Figures come from different dates</h4><p>The numbers here span 2017 to 2026 and several were reported by news outlets quoting the ministry's portal, not read from the portal directly. Check each against the primary source before citing it.</p></div>
-      <div><h4>The map covers a fraction of buildings</h4><p>About 43,000 administrative and social facilities are registered.<a class="cite" href="#ref-1">[1]</a> Sidewalks, crossings, housing and most private businesses are outside it.</p></div>
+    <div class="limits" data-reveal>
+      <div><span class="lim-i" aria-hidden="true">1</span><h4>Registration is not prevalence</h4><p>The 3.7% figure counts people registered through medical and social assessment. The UN committee says this approach under-represents people with disabilities.<a class="cite" href="#ref-4">[4]</a> The World Health Organization estimates that about 16% of people worldwide have a significant disability, measured differently.<a class="cite" href="#ref-10">[10]</a></p></div>
+      <div><span class="lim-i" aria-hidden="true">2</span><h4>"Adapted" is not defined the same way twice</h4><p>The official map records certified equipment. Civil-society maps rate whether a person can get in and use the service. In Almaty, 10,700 facilities are listed as fully or partly adapted, yet only 1,600 are adapted for wheelchair users.<a class="cite" href="#ref-9">[9]</a></p></div>
+      <div><span class="lim-i" aria-hidden="true">3</span><h4>Figures come from different dates</h4><p>The numbers here span 2017 to 2026 and several were reported by news outlets quoting the ministry's portal, not read from the portal directly. Check each against the primary source before citing it.</p></div>
+      <div><span class="lim-i" aria-hidden="true">4</span><h4>The map covers a fraction of buildings</h4><p>About 43,000 administrative and social facilities are registered.<a class="cite" href="#ref-1">[1]</a> Sidewalks, crossings, housing and most private businesses are outside it.</p></div>
     </div>
   </div>
 </section>
@@ -160,38 +198,66 @@
 <section id="research" class="band">
   <div class="wrap">
     <h2>Current research</h2>
-    <p class="intro">Seven academic sources in three topics: Kazakhstan's disability policy, the built environment of Almaty, and tools for assessing accessibility.</p>
+    <p class="intro">Seven academic sources in three categories. Choose a category, then open a study to read its main finding and what it means for AccessCheck KZ.</p>
 
-    <div class="topics" id="papers"></div>
+    <div class="cats" role="tablist" aria-label="Research categories" id="cats"></div>
+    <div class="cat-panel" id="catPanel" role="tabpanel" tabindex="0"></div>
 
-    <div class="two-col">
-      <div>
-        <h3>Where researchers disagree</h3>
-        <dl class="debates">
-          <dt>Law on paper or change on the ground</dt>
-          <dd>Koishibayev and colleagues find Kazakhstan's legislation largely consistent with the UN convention, but without effective mechanisms to carry it out.<a class="cite" href="#ref-22">[22]</a> The UN committee's 2024 review makes a similar point about the lack of binding enforcement of accessibility standards.<a class="cite" href="#ref-4">[4]</a></dd>
-          <dt>Official definitions or lived experience</dt>
-          <dd>The built-environment studies judge accessibility against building standards and comfort measures.<a class="cite" href="#ref-13">[13]</a><a class="cite" href="#ref-25">[25]</a> Allan and Omarova show that official systems of classification can miss what disabled people actually need.<a class="cite" href="#ref-23">[23]</a></dd>
-          <dt>Satisfactory for pedestrians, or accessible for everyone</dt>
-          <dd>Tolegen and colleagues rate pedestrian access in an Almaty district as satisfactory overall, while listing missing ramps among its faults.<a class="cite" href="#ref-25">[25]</a> Abdrassilova and Murzagaliyeva, looking at the same city from the position of low-mobility groups, conclude that people with disabilities generally cannot move around safely without help.<a class="cite" href="#ref-13">[13]</a></dd>
-          <dt>People, machines, or both</dt>
-          <dd>Saha and colleagues rely on volunteers and paid workers to label street imagery.<a class="cite" href="#ref-11">[11]</a> Moreira and colleagues automate detection.<a class="cite" href="#ref-24">[24]</a> Hara and colleagues combine the two, letting computer vision propose and people verify.<a class="cite" href="#ref-12">[12]</a></dd>
-        </dl>
-      </div>
-      <div>
-        <h3>Gaps this project responds to</h3>
-        <ul class="gaps">
-          <li><b>The three topics rarely meet.</b> The Kazakhstan sources deal with law, education policy and architecture. The assessment tools were developed and tested in North America and Portugal.<a class="cite" href="#ref-11">[11]</a><a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-24">[24]</a></li>
-          <li><b>Compliance is named as the problem but not measured at scale.</b> Ramps that fail the regulations are reported for Kazakhstan in the policy source and in both Almaty studies.<a class="cite" href="#ref-22">[22]</a><a class="cite" href="#ref-13">[13]</a><a class="cite" href="#ref-25">[25]</a> The detection tools identify whether a ramp is present or missing, not whether it complies.<a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-24">[24]</a></li>
-          <li><b>Evidence stops at one city.</b> Both built-environment studies rely on manual field surveys in Almaty, one of them in part of a single district.<a class="cite" href="#ref-13">[13]</a><a class="cite" href="#ref-25">[25]</a> Nothing in the set covers other regions or rural areas.</li>
-          <li><b>Sidewalks are studied, entrances are not.</b> The three technical studies work on sidewalks and curb ramps seen from the street.<a class="cite" href="#ref-11">[11]</a><a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-24">[24]</a> None assesses building entrances.</li>
-        </ul>
-      </div>
+    <h3>Where researchers disagree</h3>
+    <div class="debates" data-reveal>
+      <article class="debate">
+        <h4>Law on paper or change on the ground</h4>
+        <div class="sides">
+          <p>Kazakhstan's legislation is largely consistent with the UN convention, Koishibayev and colleagues find.<a class="cite" href="#ref-22">[22]</a></p>
+          <span class="vs" aria-hidden="true">vs</span>
+          <p>There are no effective mechanisms to carry it out.<a class="cite" href="#ref-22">[22]</a> The UN committee's 2024 review makes a similar point about the lack of binding enforcement of accessibility standards.<a class="cite" href="#ref-4">[4]</a></p>
+        </div>
+      </article>
+      <article class="debate">
+        <h4>Official definitions or lived experience</h4>
+        <div class="sides">
+          <p>The built-environment studies judge accessibility against building standards and comfort measures.<a class="cite" href="#ref-13">[13]</a><a class="cite" href="#ref-25">[25]</a></p>
+          <span class="vs" aria-hidden="true">vs</span>
+          <p>Allan and Omarova show that official systems of classification can miss what disabled people actually need.<a class="cite" href="#ref-23">[23]</a></p>
+        </div>
+      </article>
+      <article class="debate">
+        <h4>Satisfactory for pedestrians, or accessible for everyone</h4>
+        <div class="sides">
+          <p>Tolegen and colleagues rate pedestrian access in an Almaty district as satisfactory overall, while listing missing ramps among its faults.<a class="cite" href="#ref-25">[25]</a></p>
+          <span class="vs" aria-hidden="true">vs</span>
+          <p>Abdrassilova and Murzagaliyeva, looking at the same city from the position of low-mobility groups, conclude that people with disabilities generally cannot move around safely without help.<a class="cite" href="#ref-13">[13]</a></p>
+        </div>
+      </article>
+      <article class="debate">
+        <h4>People, machines, or both</h4>
+        <div class="sides three">
+          <p><b>People.</b> Saha and colleagues rely on volunteers and paid workers to label street imagery.<a class="cite" href="#ref-11">[11]</a></p>
+          <p><b>Machines.</b> Moreira and colleagues automate detection.<a class="cite" href="#ref-24">[24]</a></p>
+          <p><b>Both.</b> Hara and colleagues combine the two, letting computer vision propose and people verify.<a class="cite" href="#ref-12">[12]</a></p>
+        </div>
+      </article>
     </div>
 
-    <h3>Overall research contribution</h3>
-    <p>Together, these studies establish three foundations for AccessCheck KZ. Research on disability rights reveals gaps between policy and implementation in Kazakhstan. Urban infrastructure studies document physical barriers and limitations of existing assessments. International research demonstrates how AI and public participation can support accessibility mapping.</p>
-    <p>However, no study among these seven evaluates a system that combines AI-based visual detection, standards compliance, and disabled people's assessments of functional usability in Kazakhstan. AccessCheck KZ proposes to address this gap through a three-level assessment framework that distinguishes between what AI can see, what regulations require, and what people can actually use.</p>
+    <h3>Gaps this project responds to</h3>
+    <ol class="gaps" data-reveal>
+      <li><b>The three topics rarely meet.</b> The Kazakhstan sources deal with law, education policy and architecture. The assessment tools were developed and tested in North America and Portugal.<a class="cite" href="#ref-11">[11]</a><a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-24">[24]</a></li>
+      <li><b>Compliance is named as the problem but not measured at scale.</b> Ramps that fail the regulations are reported for Kazakhstan in the policy source and in both Almaty studies.<a class="cite" href="#ref-22">[22]</a><a class="cite" href="#ref-13">[13]</a><a class="cite" href="#ref-25">[25]</a> The detection tools identify whether a ramp is present or missing, not whether it complies.<a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-24">[24]</a></li>
+      <li><b>Evidence stops at one city.</b> Both built-environment studies rely on manual field surveys in Almaty, one of them in part of a single district.<a class="cite" href="#ref-13">[13]</a><a class="cite" href="#ref-25">[25]</a> Nothing in the set covers other regions or rural areas.</li>
+      <li><b>Sidewalks are studied, entrances are not.</b> The three technical studies work on sidewalks and curb ramps seen from the street.<a class="cite" href="#ref-11">[11]</a><a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-24">[24]</a> None assesses building entrances.</li>
+    </ol>
+
+    <div class="contribution" data-reveal>
+      <h3>Overall research contribution</h3>
+      <p class="contribution-lead">Together, these studies establish three foundations for AccessCheck KZ.</p>
+      <div class="pillars">
+        <p><span>1</span>Research on disability rights reveals gaps between policy and implementation in Kazakhstan.</p>
+        <p><span>2</span>Urban infrastructure studies document physical barriers and limitations of existing assessments.</p>
+        <p><span>3</span>International research demonstrates how AI and public participation can support accessibility mapping.</p>
+      </div>
+      <p class="gap-statement">However, no study among these seven evaluates a system that combines AI-based visual detection, standards compliance, and disabled people's assessments of functional usability in Kazakhstan.</p>
+      <p class="contribution-end">AccessCheck KZ proposes to address this gap through a three-level assessment framework that distinguishes between what AI can see, what regulations require, and what people can actually use.</p>
+    </div>
   </div>
 </section>
 
@@ -201,12 +267,59 @@
     <h2>AI solution: the AccessCheck KZ prototype</h2>
     <p class="intro">The proposed system reads a photo of an entrance, ramp or sidewalk and reports at three levels. Each level is harder than the last, and each needs a person to confirm it.</p>
 
-    <ol class="level-cards">
-      <li><h3>Visual presence</h3><p>Is a ramp, step, door, handrail or obstacle visible? This is object detection, the task existing research does best.</p></li>
-      <li><h3>Standards compliance</h3><p>Do slope, width and threshold meet Kazakhstan's building rules (SN RK 3.06-01-2011 and SP RK 3.06-101-2012)?<a class="cite" href="#ref-18">[18]</a> A single photo rarely gives reliable measurements.</p></li>
-      <li><h3>Functional usability</h3><p>Could a person get from the street through the door, today, without help? This depends on parked cars, snow, a locked gate, a heavy door.</p></li>
+    <div class="explorer" id="explorer" data-level="1">
+      <div class="ex-tabs" role="tablist" aria-label="Assessment level">
+        <button role="tab" aria-selected="true" data-level="1" id="exTab1" aria-controls="exPanel"><span class="n">1</span><span><b>Visual Presence</b><small>Is the feature there?</small></span></button>
+        <button role="tab" aria-selected="false" data-level="2" id="exTab2" aria-controls="exPanel"><span class="n">2</span><span><b>Standards Compliance</b><small>Does it meet the rules?</small></span></button>
+        <button role="tab" aria-selected="false" data-level="3" id="exTab3" aria-controls="exPanel"><span class="n">3</span><span><b>Functional Usability</b><small>Can someone use it today?</small></span></button>
+      </div>
+      <div class="ex-body" id="exPanel" role="tabpanel" tabindex="0" aria-labelledby="exTab1">
+        <figure class="ex-stage">
+          <div class="ex-canvas">
+            <div class="ex-scene" id="exScene" data-level="1"></div>
+            <div class="ex-tags" id="exTags" aria-hidden="true"></div>
+          </div>
+          <figcaption>
+            <span class="key"><i class="k-ai"></i>AI could flag</span>
+            <span class="key"><i class="k-human"></i>Needs a person</span>
+            <span>Drawn illustration of the proposed output. No model produced these labels.</span>
+          </figcaption>
+        </figure>
+        <div class="ex-info" aria-live="polite">
+          <p class="ex-desc" id="exDesc"></p>
+          <div class="ex-cols">
+            <div class="ex-col ai"><h3>What AI could identify</h3><ul id="exAi"></ul></div>
+            <div class="ex-col human"><h3>What needs human verification</h3><ul id="exHuman"></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How the full system would work</h3>
+    <ol class="flow" data-reveal>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="18" width="48" height="34" rx="6" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M22 18l4-7h12l4 7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><circle cx="32" cy="35" r="9" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>
+        <h4>Photo Submission</h4>
+        <p>A resident, inspector or organisation of people with disabilities submits a photo with a location.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="10" y="12" width="44" height="40" rx="5" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M18 44l14-12h12" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><rect x="16" y="26" width="30" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 4"/></svg>
+        <h4>AI Detection</h4>
+        <p>A detector trained on local images proposes level 1 features and flags possible level 2 and 3 problems, with a confidence score.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="26" cy="20" r="9" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M10 52c0-11 7-17 16-17 4 0 7 1 10 3" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M38 46l7 7 12-14" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h4>Human Verification</h4>
+        <p>A trained reviewer accepts, corrects or rejects every suggestion. Reviewers include wheelchair users and other people with lived experience.</p>
+      </li>
+      <li>
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M8 16l16-6 16 6 16-6v38l-16 6-16-6-16 6z" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linejoin="round"/><path d="M24 10v38M40 16v38" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="30" r="5" fill="currentColor"/></svg>
+        <h4>Accessibility Map</h4>
+        <p>Confirmed results are published beside the official status so the two can be compared.</p>
+      </li>
     </ol>
 
+    <h3>Try the three levels yourself</h3>
     <div class="notice" role="note">
       <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v6M12 16.5v.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
       <p><b>No AI analyses your photo on this page.</b> The demonstration below shows the workflow and the report a trained system would produce. You make the assessment yourself. Only the image-quality check is computed, with simple arithmetic in your browser. Your photo never leaves your device.</p>
@@ -279,13 +392,14 @@
       </section>
     </div>
 
-    <h3>How the full system would work</h3>
-    <ol class="pipeline">
-      <li><b>Photo in.</b> A resident, inspector or organisation of people with disabilities submits a photo with a location.</li>
-      <li><b>Model suggests.</b> A detector trained on local images proposes level 1 features and flags possible level 2 and 3 problems, with a confidence score.</li>
-      <li><b>Person confirms.</b> A trained reviewer accepts, corrects or rejects every suggestion. Reviewers include wheelchair users and other people with lived experience.</li>
-      <li><b>Map updates.</b> Confirmed results are published beside the official status so the two can be compared.</li>
-    </ol>
+    <details class="more">
+      <summary>How the three levels are defined</summary>
+      <ol class="defs">
+        <li><b>Visual presence.</b> Is a ramp, step, door, handrail or obstacle visible? This is object detection, the task existing research does best.</li>
+        <li><b>Standards compliance.</b> Do slope, width and threshold meet Kazakhstan's building rules (SN RK 3.06-01-2011 and SP RK 3.06-101-2012)?<a class="cite" href="#ref-18">[18]</a> A single photo rarely gives reliable measurements.</li>
+        <li><b>Functional usability.</b> Could a person get from the street through the door, today, without help? This depends on parked cars, snow, a locked gate, a heavy door.</li>
+      </ol>
+    </details>
   </div>
 </section>
 
@@ -293,61 +407,82 @@
 <section id="cost" class="band">
   <div class="wrap">
     <h2>The cost of AI</h2>
-    <p class="intro">A system like this is cheap to run and expensive to do properly. Change the assumptions to see where the cost sits.</p>
+    <p class="intro">A system like this is cheap to run and expensive to do properly. Change the inputs to see where the cost sits.</p>
+
+    <ul class="legend" aria-label="How to read the input labels">
+      <li><span class="tag measured">Measured</span>Measured in a published study</li>
+      <li><span class="tag src">Sourced</span>A figure or estimate from an outside source</li>
+      <li><span class="tag assume">Our assumption</span>Our own choice, not evidence</li>
+    </ul>
 
     <div class="calc">
-      <form class="calc-in" id="calcForm" aria-label="Cost assumptions">
-        <h3>Assumptions</h3>
-        <label>Facilities assessed per year <span class="tag src">Source [1]</span><input type="number" id="cFac" min="0" step="1000" value="43000"></label>
-        <label>Photos per facility <span class="tag assume">Our assumption</span><input type="number" id="cPhotos" min="1" step="1" value="4"></label>
-        <label>Type of model <span class="tag src">Source [14]</span>
+      <form class="calc-in" id="calcForm" aria-label="Cost inputs">
+        <h3>Inputs</h3>
+        <label><span class="lab">Facilities assessed per year <span class="tag src">Sourced [1]</span></span><input type="number" id="cFac" min="0" step="1000" value="43000"></label>
+        <label><span class="lab">Photos per facility <span class="tag assume">Our assumption</span></span><input type="number" id="cPhotos" min="1" step="1" value="4"></label>
+        <label><span class="lab">Type of model <span class="tag measured">Measured [14]</span></span>
           <select id="cModel">
             <option value="0.038" selected>Object detector, 0.038 kWh per 1,000 images</option>
             <option value="0.007">Image classifier, 0.007 kWh per 1,000 images</option>
             <option value="0.063">Image-captioning model, 0.063 kWh per 1,000 images</option>
           </select>
         </label>
-        <label>Grid carbon intensity, g CO₂e per kWh <span class="tag src">Source [15]</span><input type="number" id="cGrid" min="0" step="10" value="603"></label>
-        <label>Cloud price, US$ per 1,000 images <span class="tag src">Source [16]</span><input type="number" id="cCloud" min="0" step="0.05" value="2.25"></label>
-        <label>Exchange rate, tenge per US$ <span class="tag assume">Our assumption, check the National Bank rate</span><input type="number" id="cFx" min="0" step="5" value="470"></label>
-        <label>Share of images a person reviews, % <span class="tag assume">Our assumption</span><input type="number" id="cShare" min="0" max="100" step="5" value="100"></label>
-        <label>Review time per image, minutes <span class="tag assume">Our assumption</span><input type="number" id="cMin" min="0" step="0.5" value="2"></label>
-        <label>Reviewer pay, tenge per hour <span class="tag src">Source [17]</span><input type="number" id="cWage" min="0" step="100" value="2508"></label>
+        <label><span class="lab">Grid carbon intensity, g CO₂e per kWh <span class="tag src">Sourced [15]</span></span><input type="number" id="cGrid" min="0" step="10" value="603"></label>
+        <label><span class="lab">Cloud price, US$ per 1,000 images <span class="tag src">Sourced [16]</span></span><input type="number" id="cCloud" min="0" step="0.05" value="2.25"></label>
+        <label><span class="lab">Exchange rate, tenge per US$ <span class="tag assume">Our assumption, check the National Bank rate</span></span><input type="number" id="cFx" min="0" step="5" value="470"></label>
+        <label><span class="lab">Share of images a person reviews, % <span class="tag assume">Our assumption</span></span><input type="number" id="cShare" min="0" max="100" step="5" value="100"></label>
+        <label><span class="lab">Review time per image, minutes <span class="tag assume">Our assumption</span></span><input type="number" id="cMin" min="0" step="0.5" value="2"></label>
+        <label><span class="lab">Reviewer pay, tenge per hour <span class="tag src">Sourced [17]</span></span><input type="number" id="cWage" min="0" step="100" value="2508"></label>
+        <button type="button" class="link-btn" id="calcReset">Reset to starting values</button>
       </form>
       <div class="calc-out" aria-live="polite">
         <h3>Estimated yearly running cost</h3>
+        <p class="calc-head" id="calcHead"></p>
         <div class="out-grid" id="calcOut"></div>
+        <h4 class="calc-chart-h">Where the money goes</h4>
         <div class="chart" id="chartCost"></div>
         <p class="small">These are estimates from the inputs on the left, not measurements of a built system. Energy covers inference only, measured on one type of GPU in the source study.<a class="cite" href="#ref-14">[14]</a> Cloud price is one provider's list price for object localisation.<a class="cite" href="#ref-16">[16]</a> Reviewer pay uses the national average hourly wage for 2026.<a class="cite" href="#ref-17">[17]</a></p>
-        <p class="small">Not estimated here: training the model, collecting and labelling local photos, software development, storage, and the cost of fixing the barriers found.</p>
       </div>
     </div>
 
-    <div class="cost-grid">
-      <article>
-        <h3>Environmental</h3>
+    <div class="notyet">
+      <h3>Not yet estimated</h3>
+      <p>These costs are real but are not in the calculator, because no reliable figure was found.</p>
+      <ul>
+        <li>Training the model</li>
+        <li>Collecting and labelling local photos</li>
+        <li>Software development</li>
+        <li>Storage</li>
+        <li>Fixing the barriers found</li>
+      </ul>
+    </div>
+
+    <h3>Six kinds of cost</h3>
+    <div class="costs">
+      <details class="cost-card" open>
+        <summary><span class="cc-t">Environmental</span><span class="cc-h">Small per image, on a fossil-heavy grid</span></summary>
         <p>A task-specific detector uses very little electricity per image: 0.038 kWh per thousand in the reference study, against 2.9 kWh per thousand for image generation.<a class="cite" href="#ref-14">[14]</a> Kazakhstan's grid is about 85% fossil-fuelled, at roughly 600 g CO₂e per kWh, so the same work emits more here than on a cleaner grid.<a class="cite" href="#ref-15">[15]</a> The practical rule is to use the smallest model that does the job.</p>
-      </article>
-      <article>
-        <h3>Economic</h3>
+      </details>
+      <details class="cost-card">
+        <summary><span class="cc-t">Economic</span><span class="cc-h">People cost more than computing</span></summary>
         <p>Computing is the small line. Human review dominates at any realistic volume. For scale, planned public spending on support for people with disabilities in 2026 is 1.1 trillion tenge.<a class="cite" href="#ref-1">[1]</a> Finding a barrier does not pay for removing it.</p>
-      </article>
-      <article>
-        <h3>Labour</h3>
+      </details>
+      <details class="cost-card">
+        <summary><span class="cc-t">Labor</span><span class="cc-h">Labelling and checking is skilled work</span></summary>
         <p>Someone has to label the training photos and check the results. Project Sidewalk needed 797 volunteers and paid workers over 18 months to place about 205,000 labels in one city.<a class="cite" href="#ref-11">[11]</a> This is skilled work, and people with disabilities should be paid to do and lead it, not asked to volunteer.</p>
-      </article>
-      <article>
-        <h3>Governance</h3>
+      </details>
+      <details class="cost-card">
+        <summary><span class="cc-t">Governance</span><span class="cc-h">It needs an owner and an appeals route</span></summary>
         <p>Kazakhstan's Law on Artificial Intelligence took effect on 18 January 2026. It sorts systems into three risk levels and places the duty to classify on the system's owner.<a class="cite" href="#ref-19">[19]</a> A tool that influences which buildings are certified would need an owner, an appeals route and published error rates. The UN committee already notes the lack of binding enforcement.<a class="cite" href="#ref-4">[4]</a></p>
-      </article>
-      <article>
-        <h3>Data ethics</h3>
+      </details>
+      <details class="cost-card">
+        <summary><span class="cc-t">Data ethics</span><span class="cc-h">Photos capture faces, plates and homes</span></summary>
         <p>Street photos capture faces, number plates and homes, which fall under the Law on Personal Data and their Protection.<a class="cite" href="#ref-20">[20]</a> Photos should be blurred before storage and kept only as long as needed.</p>
-      </article>
-      <article>
-        <h3>Accuracy as a cost</h3>
+      </details>
+      <details class="cost-card">
+        <summary><span class="cc-t">Accuracy</span><span class="cc-h">About one detection in seven is wrong</span></summary>
         <p>A wrong "accessible" label sends someone to a door they cannot enter. Even a strong detector, at 85% precision for curb ramps, is wrong about roughly one detection in seven, and scanning whole panoramas lowered overall precision further.<a class="cite" href="#ref-24">[24]</a> Unreviewed output would mislead.</p>
-      </article>
+      </details>
     </div>
   </div>
 </section>
@@ -357,44 +492,49 @@
   <div class="wrap">
     <h2>Final verdict</h2>
     <p class="verdict-q">Should Kazakhstan implement AccessCheck KZ?</p>
-    <p class="verdict-a">Yes, but AI should support human inspections, not replace them.</p>
-    <p class="verdict-p">AccessCheck KZ could help make accessibility problems more visible to government authorities and the public. Instead of simply recording whether a building has a ramp or another accessibility feature, the system would help identify barriers that need further inspection and verification against accessibility standards.</p>
-    <p class="verdict-p">By analyzing photographs, AI could reduce the time required to identify potential problems and support data collection across Kazakhstan, including both urban and rural areas.</p>
+    <p class="verdict-a"><span>Yes</span> — but AI should support human inspections, not replace them.</p>
+    <div class="verdict-why">
+      <p>AccessCheck KZ could help make accessibility problems more visible to government authorities and the public. Instead of simply recording whether a building has a ramp or another accessibility feature, the system would help identify barriers that need further inspection and verification against accessibility standards.</p>
+      <p>By analyzing photographs, AI could reduce the time required to identify potential problems and support data collection across Kazakhstan, including both urban and rural areas.</p>
+    </div>
 
-    <div class="two-col">
-      <div>
-        <h3>Pros</h3>
-        <ul class="plain">
-          <li><b>Better accountability:</b> Authorities could identify reported barriers, track whether they have been addressed, and verify that improvements meet accessibility standards.</li>
-          <li><b>Faster assessments:</b> AI could help screen large numbers of photographs, allowing inspectors to focus on locations requiring attention.</li>
-          <li><b>Wider coverage:</b> Community submissions could help collect accessibility information from cities, smaller towns, and rural communities.</li>
-          <li><b>Meaningful accessibility:</b> The focus would shift from simply installing ramps to ensuring that infrastructure is compliant and genuinely usable.</li>
+    <div class="proscons" data-reveal>
+      <section class="pc benefits" aria-labelledby="pcB">
+        <h3 id="pcB">Benefits</h3>
+        <ul>
+          <li><b>Better accountability</b>Authorities could identify reported barriers, track whether they have been addressed, and verify that improvements meet accessibility standards.</li>
+          <li><b>Faster assessments</b>AI could help screen large numbers of photographs, allowing inspectors to focus on locations requiring attention.</li>
+          <li><b>Wider coverage</b>Community submissions could help collect accessibility information from cities, smaller towns, and rural communities.</li>
+          <li><b>Meaningful accessibility</b>The focus would shift from simply installing ramps to ensuring that infrastructure is compliant and genuinely usable.</li>
         </ul>
-      </div>
-      <div>
-        <h3>Limitations</h3>
-        <ul class="plain">
-          <li><b>Incomplete photographs:</b> Images may not show the entire entrance, ramp, or surrounding environment. AI may overlook important barriers or interpret features incorrectly.</li>
-          <li><b>Standardized photo collection:</b> Contributors would need clear instructions about which angles, distances, and features to photograph to make assessments more reliable.</li>
-          <li><b>Human verification:</b> Photographs alone cannot establish exact dimensions, compliance with regulations, or usability for every person. Trained inspectors and people with disabilities must verify the results.</li>
-          <li><b>Unequal participation:</b> Rural areas and communities with limited internet access may remain underrepresented without targeted outreach.</li>
+      </section>
+      <section class="pc limitations" aria-labelledby="pcL">
+        <h3 id="pcL">Limitations</h3>
+        <ul>
+          <li><b>Incomplete photographs</b>Images may not show the entire entrance, ramp, or surrounding environment. AI may overlook important barriers or interpret features incorrectly.</li>
+          <li><b>Standardized photo collection</b>Contributors would need clear instructions about which angles, distances, and features to photograph to make assessments more reliable.</li>
+          <li><b>Human verification</b>Photographs alone cannot establish exact dimensions, compliance with regulations, or usability for every person. Trained inspectors and people with disabilities must verify the results.</li>
+          <li><b>Unequal participation</b>Rural areas and communities with limited internet access may remain underrepresented without targeted outreach.</li>
         </ul>
-      </div>
+      </section>
     </div>
 
     <h3>Conditions for implementation</h3>
-    <ol class="conditions">
-      <li>Start with a pilot in one urban and one rural area to evaluate accuracy and usefulness.</li>
-      <li>Develop clear photography guidelines with accessibility experts and organizations representing people with disabilities.</li>
-      <li>Use AI for preliminary screening, followed by measurements, inspections, and community assessments where necessary.</li>
-      <li>Establish government accountability through a transparent process for reporting, addressing, and verifying accessibility problems.</li>
-      <li>Protect personal data by obtaining appropriate consent and removing identifying information from submitted photographs.</li>
-      <li>Evaluate the pilot based on detection accuracy, geographic coverage, costs, and whether reported barriers are actually resolved.</li>
+    <ol class="roadmap" data-reveal>
+      <li><b>Pilot</b>Start with a pilot in one urban and one rural area to evaluate accuracy and usefulness.</li>
+      <li><b>Photo guidelines</b>Develop clear photography guidelines with accessibility experts and organizations representing people with disabilities.</li>
+      <li><b>Screen, then inspect</b>Use AI for preliminary screening, followed by measurements, inspections, and community assessments where necessary.</li>
+      <li><b>Accountability</b>Establish government accountability through a transparent process for reporting, addressing, and verifying accessibility problems.</li>
+      <li><b>Data protection</b>Protect personal data by obtaining appropriate consent and removing identifying information from submitted photographs.</li>
+      <li><b>Evaluate</b>Evaluate the pilot based on detection accuracy, geographic coverage, costs, and whether reported barriers are actually resolved.</li>
     </ol>
 
-    <h3>The bottom line</h3>
-    <p class="verdict-p">AccessCheck KZ should be tested as a tool that helps Kazakhstan move from counting accessibility features to verifying real accessibility.</p>
-    <p class="verdict-p">Its success should not be measured by how many ramps AI detects, but by how many barriers are identified, verified, and ultimately removed.</p>
+    <div class="bottomline">
+      <h3>The bottom line</h3>
+      <p>AccessCheck KZ should be tested as a tool that helps Kazakhstan move from counting accessibility features to verifying real accessibility.</p>
+      <p>Its success should not be measured by how many ramps AI detects, but by how many barriers are identified, verified, and ultimately removed.</p>
+      <p class="closing">The goal is not to count more ramps. It is to make sure people can actually use them.</p>
+    </div>
   </div>
 </section>
 
@@ -404,19 +544,19 @@
     <h2>AI Transparency Statement</h2>
     <p class="intro">AccessCheck KZ was developed with assistance from Claude (Anthropic) and ChatGPT (OpenAI). My AI conversations are documented in the submitted AI Process Log.</p>
 
-    <div class="ts-cols">
-      <section class="ts-col" aria-labelledby="tsAi">
-        <h3 id="tsAi">What AI contributed</h3>
-        <ul class="ts-list">
+    <div class="ts-cols" data-reveal>
+      <section class="ts-card" aria-labelledby="tsAi">
+        <h3 id="tsAi">AI Contributed</h3>
+        <ul>
           <li>Claude generated the website's initial structure, HTML, CSS, JavaScript, and visual design based on my instructions.</li>
           <li>ChatGPT helped brainstorm the project's structure, summarize academic literature, identify research gaps, and explain technical concepts.</li>
           <li>AI assisted in organizing sources into research approaches, developing data visualizations, and creating the interactive cost calculator.</li>
           <li>AI suggested improvements to the presentation, wording, and organization of the website.</li>
         </ul>
       </section>
-      <section class="ts-col mine" aria-labelledby="tsMe">
-        <h3 id="tsMe">What I decided</h3>
-        <ul class="ts-list">
+      <section class="ts-card mine" aria-labelledby="tsMe">
+        <h3 id="tsMe">I Decided</h3>
+        <ul>
           <li>I chose the topic based on my personal experience assessing polling-station accessibility during election observation in Kazakhstan.</li>
           <li>I developed the project's central argument: the presence of accessibility features does not guarantee their usability.</li>
           <li>I selected and reviewed academic sources, checked references, and determined how each study contributed to the project.</li>
@@ -426,9 +566,9 @@
       </section>
     </div>
 
-    <section class="ts-rejected" aria-labelledby="tsNo">
-      <h3 id="tsNo">What I rejected, and why</h3>
-      <dl class="ts-rows">
+    <section class="ts-rejected" aria-labelledby="tsNo" data-reveal>
+      <h3 id="tsNo">What I Rejected — and Why</h3>
+      <dl>
         <div><dt>AI as an automatic accessibility certifier</dt><dd>Rejected because photographs alone cannot establish compliance with building standards or functional usability.</dd></div>
         <div><dt>A fully automated assessment system</dt><dd>Rejected because AI can make mistakes. Human inspection and assessments by people with disabilities remain essential.</dd></div>
         <div><dt>Treating official accessibility statistics as proof of actual usability</dt><dd>Rejected because official figures and civil-society assessments use different definitions, samples, and methods.</dd></div>
@@ -437,7 +577,7 @@
 
     <p class="ts-note">This transparency statement was prepared with AI assistance and reviewed by the project author.</p>
 
-    <h3>References</h3>
+    <h3 id="references">References</h3>
     <ol class="refs" id="refs"></ol>
   </div>
 </section>
