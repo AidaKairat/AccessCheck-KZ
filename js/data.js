@@ -6,7 +6,7 @@ window.ACK = (function () {
     { id: 1, text: 'Government of the Republic of Kazakhstan, Office of the Prime Minister. "Network of Rehabilitation Centers and Accessibility Being Expanded in Kazakhstan." 21 April 2026.', url: 'https://primeminister.kz/en/news/set-reabilitacionnyx-centrov-i-dostupnost-sredy-rassiriaiut-v-kazaxstane-31293' },
     { id: 2, text: 'Ranking.kz. "The \'Barrier-Free\' Environment in Kazakhstan Remains Full of Significant Barriers for People with Special Needs." 8 May 2025. Cites the Ministry of Labour and Social Protection portal, data as of 14 February 2025.', url: 'https://ranking.kz/en/reviews-en/industries-en/the-barrier-free-environment-in-kazakhstan-remains-full-of-significant-barriers-for-people-with-special-needs.html' },
     { id: 3, text: 'CABAR.asia (Central Asian Bureau for Analytical Reporting). "How Accessible is Kazakhstan for People with Disabilities?" 2021.', url: 'https://cabar.asia/en/how-accessible-is-kazakhstan-for-people-with-disabilities' },
-    { id: 4, text: 'United Nations Committee on the Rights of Persons with Disabilities. "Concluding observations on the initial report of Kazakhstan." CRPD/C/KAZ/CO/1, 19 April 2024. Paragraphs 7, 19, 20, 65.', url: 'https://digitallibrary.un.org/record/4044522' },
+    { id: 4, text: 'United Nations Committee on the Rights of Persons with Disabilities. "Concluding observations on the initial report of Kazakhstan." CRPD/C/KAZ/CO/1, 19 April 2024. Paragraphs 7, 19, 20, 65. The 44.8% rural figure is in paragraph 7(c), citing Kazakhstan\'s initial report (CRPD/C/KAZ/1), paragraph 108.', url: 'https://digitallibrary.un.org/record/4044522' },
     { id: 5, text: 'Orda.kz. "Kazakhstan Plans to Employ 17,000 People With Disabilities in 2026." 21 April 2026. Reports figures given by the Minister of Labour and Social Protection.', url: 'https://en.orda.kz/kazakhstan-plans-to-employ-17000-people-with-disabilities-in-2026-10175/' },
     { id: 6, text: 'QazMonitor. "Kazakhstan Enhances Job Opportunities for People with Disabilities." 10 November 2025. Data as of 1 November 2025.', url: 'https://en.qazmonitor.com/news/3132/kazakhstan-enhances-job-opportunities-for-people-with-disabilities' },
     { id: 7, text: 'UNFPA Kazakhstan. "Outcomes of assessment of social and gender-specific needs of persons with disabilities in Turkestan oblast and Shymkent city." Reports 674,200 persons (2017).', url: 'https://kazakhstan.unfpa.org/sites/default/files/pub-pdf/itogi_ocenki-eng.pdf' },
@@ -61,14 +61,14 @@ window.ACK = (function () {
 
   var regions = {
     rural: {
-      sub: 'Share of people with disabilities living in rural areas, February 2025. Only the regions named by the source are shown.',
+      sub: 'Share of people with disabilities living in rural areas. Nationally it is 44.8%, according to the UN committee\'s 2024 concluding observations, which cite Kazakhstan\'s initial report. The committee noted limited information about disability policies for rural residents. The regional figures come from a different source (February 2025), which gave 40.1% nationally, so compare them with care. This shows where people live. It is not an infrastructure-accessibility rate.',
       unit: '%', max: 100,
       rows: [
         { label: 'Almaty Region', value: 81.1, ref: 2 },
         { label: 'Turkistan Region', value: 73.6, ref: 2 },
         { label: 'Zhambyl Region', value: 59.3, ref: 2 },
         { label: 'North Kazakhstan', value: 56.7, ref: 2 },
-        { label: 'Kazakhstan', value: 40.1, ref: 2, muted: true }
+        { label: 'Kazakhstan (UN, 2024)', value: 44.8, ref: 4, muted: true }
       ]
     },
     employ: {
