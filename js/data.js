@@ -31,8 +31,8 @@ window.ACK = (function () {
     { id: 26, text: 'Koishibayev, M. M., Nechayeva, Y. L., and Kapitsyn, V. M. (2020). "National plans to ensure the rights of persons with disabilities in Kazakhstan: amendments to the legislation." Disability & Society, 35(8), 1355-1359.', url: 'https://doi.org/10.1080/09687599.2019.1698153' },
     { id: 27, text: 'Allan, J., and Omarova, T. (2022). "Disability and inclusion in Kazakhstan." Disability & Society, 37(7), 1067-1084.', url: 'https://doi.org/10.1080/09687599.2020.1867073' },
     { id: 28, text: 'Moreira, R. S., Moita, S., Torres, J. M., Gouveia, F., Dinis, M. A. P., Ferreira, D., Araujo, M., and Guerreiro, M. J. S. (2025). "Automating City Accessibility Constraints Mapping Through AI-Assisted Scanning of Street View Imagery." IET Smart Cities, 7(1), e70020.', url: 'https://doi.org/10.1049/smc2.70020' },
-    { id: 29, text: 'Fraser et al. (2024). Placeholder: full citation to be added by the author.', url: '' },
-    { id: 30, text: 'Sfounis et al. (2024). Placeholder: full citation to be added by the author.', url: '' }
+    { id: 29, text: 'Fraser, T., Feeley, O., Ridge, A., Cervini, A., Rago, V., Gilmore, K., Worthington, G., and Berliavsky, I. (2024). "How far I\'ll go: Social infrastructure accessibility and proximity in urban neighborhoods." Landscape and Urban Planning, 241, 104922.', url: 'https://doi.org/10.1016/j.landurbplan.2023.104922' },
+    { id: 30, text: 'Sfounis, D., Kolovos, D., Kostas, A., Tsoukalidis, I., and Karasavvoglou, A. (2024). "Use of an AI-based digital prediction model for the evaluation of urban infrastructure in terms of accessibility and efficient urban movement for people with disabilities." Intellectual Economics, 18(2), 237-260.', url: 'https://doi.org/10.13165/IE-24-18-2-01' }
   ];
 
   /* Registered people with disabilities, thousands. t = decimal year. */
@@ -123,25 +123,33 @@ window.ACK = (function () {
   var papers = [
     { ref: 26, approach: 'policy', scope: 'Kazakhstan', cite: 'Koishibayev et al., 2020',
       title: 'National plans to ensure the rights of persons with disabilities in Kazakhstan',
-      summary: 'Reviews how Kazakhstan changed its laws after ratifying the UN disability convention. Finds the legislation largely in line with the convention, and names the lack of effective mechanisms for carrying policy out as the main problem.',
-      finding: '', relevance: '' },
+      summary: 'A short review of how Kazakhstan changed its laws after ratifying the UN disability convention in 2015, covering progress, remaining problems and proposed solutions.',
+      finding: 'The laws largely match the convention, but there are no effective mechanisms to carry them out. With weak control over construction and transport, an accessible environment has not been achieved, and the wheelchair ramps that exist usually fail to meet the regulations.',
+      relevance: '' },
     { ref: 27, approach: 'policy', scope: 'Kazakhstan', cite: 'Allan and Omarova, 2022',
       title: 'Disability and inclusion in Kazakhstan',
-      summary: '', finding: '', relevance: '' },
+      summary: 'Examines Kazakhstan\'s readiness for inclusive education after ratifying the convention, using the ideas of "making up people" and "ablenationalism" to analyse how disabled children and adults are positioned in school and society.',
+      finding: 'The state system for assessing and classifying disabled children, rooted in a medical model, is a major barrier to inclusion. Many teachers preferred segregation, while parents\' groups have managed to influence policy and practice.',
+      relevance: '' },
     { ref: 16, approach: 'spatial', scope: 'Kazakhstan', cite: 'Abdrassilova and Murzagaliyeva, 2020',
       title: 'Accessibility as a criterion of quality in an architectural spatial environment',
       summary: 'Architectural and planning analysis of Almaty for people with limited mobility. Argues that barrier-free access is a core measure of the quality of a city\'s built environment.',
       finding: '', relevance: '' },
     { ref: 29, approach: 'spatial', scope: 'Global', cite: 'Fraser et al., 2024',
-      title: 'Title to be added',
-      summary: '', finding: '', relevance: '' },
+      title: 'How far I\'ll go: social infrastructure accessibility and proximity in urban neighborhoods',
+      summary: 'Measures the distance from every building in Boston (85,592 buildings) to community spaces, places of worship, social businesses and parks, and models how demographics and urban design relate to that distance. The study is about access by neighbourhood, not about disability.',
+      finding: 'Strong race- and income-related gaps in access to social infrastructure, which remain after controlling for demographics and physical infrastructure.',
+      relevance: '' },
     { ref: 30, approach: 'tech', scope: 'Global', cite: 'Sfounis et al., 2024',
-      title: 'Title to be added',
-      summary: '', finding: '', relevance: '' },
+      title: 'An AI-based digital prediction model for evaluating urban infrastructure accessibility',
+      summary: 'Proposes an AI model to evaluate urban accessibility and predict problem areas. To decide what the model should measure, the authors held two focus groups (13 participants) with members of two social inclusion organisations in Eastern Macedonia and Thrace, Greece.',
+      finding: 'Produces a set of obstacles, as perceived by people with disabilities, that are measurable enough for an AI system, and a method for collecting pilot-route data to build a first training dataset. The model itself is a proposal, not yet a trained system.',
+      relevance: '' },
     { ref: 28, approach: 'tech', scope: 'Global', cite: 'Moreira et al., 2025',
       title: 'Automating city accessibility constraints mapping with AI and street view imagery',
-      summary: 'Presents ACAMAI, a pipeline that trains an object detector on Google Street View panoramas to find and locate accessibility constraints, then places them on OpenStreetMap.',
-      finding: '', relevance: '' }
+      summary: 'Presents ACAMAI, a two-stage pipeline: a YOLOv8 detector trained on Project Sidewalk data plus a local Porto dataset, then automated scanning of 360-degree Google Street View panoramas, with results placed on OpenStreetMap.',
+      finding: 'Adding local images improved results: 91% recall and 85% precision for curb ramps. In panorama scanning, a fine 2-degree step reached 90% recall for curb ramps and 93% for obstacles, but produced many repeated detections that lowered overall precision.',
+      relevance: '' }
   ];
 
   var features = [

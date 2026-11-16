@@ -36,7 +36,7 @@ Every number in `js/data.js` carries a `ref` that points to an entry in the `REF
 Search `index.html` for `class="placeholder"`. Each one marks evidence that could not be verified and needs to be filled in or removed:
 
 - the adapted share of facilities for each region (the map gives only the number registered)
-- the full citations for Fraser et al. (2024) and Sfounis et al. (2024), and the summaries, findings, debates and gaps in "Current research"
+- in "Current research": the relevance line for each source, the key finding for Abdrassilova and Murzagaliyeva (2020), and your own debates and gaps
 - numeric limits from SP RK 3.06-101-2012 (ramp slope, widths, threshold)
 - costs not estimated (training, labelling, development, fixing barriers)
 - your own statement on how you used AI
